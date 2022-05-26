@@ -295,10 +295,10 @@
             </objects>
             <point key="canvasLocation" x="1010.7692307692307" y="-1025.1184834123221"/>
         </scene>
-        <!--SudokuViewController-->
+        <!--SudokuMainViewController-->
         <scene sceneID="UkV-9g-jpM">
             <objects>
-                <viewController id="46s-8o-ad6" userLabel="SudokuViewController" customClass="SudokuMainScreenViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="46s-8o-ad6" userLabel="SudokuMainViewController" customClass="SudokuMainScreenViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y4B-F0-fCb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="2294" y="-683"/>
         </scene>
-        <!--View Controller-->
+        <!--SudokuBoardViewController-->
         <scene sceneID="JqV-rk-3is">
             <objects>
-                <viewController id="1ll-p2-IST" sceneMemberID="viewController">
+                <viewController id="1ll-p2-IST" userLabel="SudokuBoardViewController" customClass="SudokuBoardViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bcG-Ed-AHt">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

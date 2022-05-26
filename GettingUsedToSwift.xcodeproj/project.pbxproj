@@ -20,6 +20,7 @@
 		F7881B5925D713370026F2F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5725D713370026F2F0 /* Main.storyboard */; };
 		F7881B5B25D713380026F2F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5A25D713380026F2F0 /* Assets.xcassets */; };
 		F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5C25D713380026F2F0 /* LaunchScreen.storyboard */; };
+		F796A9D528400A3E00409BAE /* SudokuBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */; };
 		F7E0D50E261355230078A15E /* TipCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E0D50D261355230078A15E /* TipCalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		F7881B5A25D713380026F2F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = GettingUsedToSwift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F7881B5D25D713380026F2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7881B5F25D713380026F2F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuBoardViewController.swift; sourceTree = "<group>"; };
 		F7E0D50D261355230078A15E /* TipCalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */,
 				F7E0D50D261355230078A15E /* TipCalViewController.swift */,
 				F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */,
+				F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				F7663EB525DD4B3F00E4A8D6 /* CountDownViewController.swift in Sources */,
 				33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */,
 				F7E0D50E261355230078A15E /* TipCalViewController.swift in Sources */,
+				F796A9D528400A3E00409BAE /* SudokuBoardViewController.swift in Sources */,
 				F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */,
 				F7881B5625D713370026F2F0 /* ViewController.swift in Sources */,
 				F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */,
