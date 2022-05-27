@@ -36,7 +36,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
         UICollectionViewCell {
             let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-            cell.backgroundColor = UIColor.orange
+            cell.backgroundColor = UIColor.blue
             return cell
     }
     
