@@ -168,5 +168,8 @@ class Sudoku{
             i+=1
             print(row)
         }
+        print("")
+        print("")
+        print("")
     }
 }

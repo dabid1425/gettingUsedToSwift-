@@ -11,6 +11,9 @@ class SudokuMainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func sudokuGame(){
         let N:Int = 9
         let K:Int = 20
         let sudoku = Sudoku(numberOfRowsColumns: N, numberOfMissingDigits: K);
@@ -18,6 +21,9 @@ class SudokuMainScreenViewController: UIViewController {
         sudoku.printBoard();
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        sudokuGame()
+    }
     
     /*
      // MARK: - Navigation
