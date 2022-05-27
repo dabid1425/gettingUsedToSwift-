@@ -10,6 +10,16 @@ import UIKit
 class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
 
+//    func sudokuGame(){
+//        let K:Int = 20
+//        let sudoku = Sudoku(numberOfMissingDigits: K);
+//        sudoku.fillValues();
+//        sudoku.printBoard();
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        sudokuGame()
+//    }
     
     @IBOutlet weak var sudokuBoard: UICollectionView!
     
