@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -302,18 +303,84 @@
                     <view key="view" contentMode="scaleToFill" id="y4B-F0-fCb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm4-50-ZxF">
+                                <rect key="frame" x="12" y="514" width="366" height="61"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="WVy-2N-abh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Nrs-N1-Lwv" kind="show" id="Q2s-sg-rAn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="13X-Vi-KsQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="13X-Vi-KsQ" firstAttribute="bottom" secondItem="Hm4-50-ZxF" secondAttribute="bottom" constant="186" id="8d9-2S-ctc"/>
+                            <constraint firstAttribute="trailing" secondItem="Hm4-50-ZxF" secondAttribute="trailing" constant="12" id="Wn6-mM-Ce0"/>
+                            <constraint firstItem="Hm4-50-ZxF" firstAttribute="leading" secondItem="y4B-F0-fCb" secondAttribute="leading" constant="12" id="hNC-by-Uhf"/>
+                            <constraint firstItem="Hm4-50-ZxF" firstAttribute="top" secondItem="y4B-F0-fCb" secondAttribute="top" constant="514" id="oP9-fv-Ora"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bXo-oK-KIi"/>
                     <navigationItem key="navigationItem" id="2EX-SO-S6E"/>
-                    <connections>
-                        <segue destination="1ll-p2-IST" kind="show" id="sJK-Lx-E4t"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8VS-T2-ZVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="-683"/>
+            <point key="canvasLocation" x="3304.6153846153843" y="-683.17535545023691"/>
+        </scene>
+        <!--Sudoku Board View Controller-->
+        <scene sceneID="bfc-TE-iQA">
+            <objects>
+                <viewController id="Nrs-N1-Lwv" customClass="SudokuBoardViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i4q-mZ-Xgl">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-Jy-5aM">
+                                <rect key="frame" x="0.0" y="32" width="390" height="360"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pWv-eY-Quc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="x4T-a4-jkz">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WRV-sp-LnM">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBB-lK-HIw">
+                                <rect key="frame" x="0.0" y="501" width="390" height="260"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vx4-xa-FOa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aCR-hT-Rp0"/>
+                    <connections>
+                        <outlet property="sudokuBoard" destination="vFB-Jy-5aM" id="D28-yW-vLE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WDA-ys-Rl5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4250.7692307692305" y="-683.17535545023691"/>
         </scene>
         <!--Item-->
         <scene sceneID="fD9-Ci-nof">
@@ -331,22 +398,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jUU-6t-tHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2294" y="-683"/>
-        </scene>
-        <!--SudokuBoardViewController-->
-        <scene sceneID="JqV-rk-3is">
-            <objects>
-                <viewController id="1ll-p2-IST" userLabel="SudokuBoardViewController" customClass="SudokuBoardViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bcG-Ed-AHt">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="h9s-fR-IVH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="1L5-Yh-lGO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJP-dk-jRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4371" y="-683"/>
         </scene>
         <!--Unit Conver.-->
         <scene sceneID="bhL-hw-jQw">
@@ -489,6 +540,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

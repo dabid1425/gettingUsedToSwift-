@@ -13,6 +13,7 @@
 		F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC6264B0A2900D47408 /* Calculator.swift */; };
 		F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC8264B0AEF00D47408 /* UnitConverter.swift */; };
 		F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */; };
+		F72B2E9728413E7D00424A1A /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */; };
 		F7663EB525DD4B3F00E4A8D6 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */; };
 		F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5125D713370026F2F0 /* AppDelegate.swift */; };
 		F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5325D713370026F2F0 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 		F711ADC6264B0A2900D47408 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		F711ADC8264B0AEF00D47408 /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
 		F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorViewController.swift; sourceTree = "<group>"; };
+		F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
 		F7881B4E25D713370026F2F0 /* GettingUsedToSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GettingUsedToSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7881B5125D713370026F2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				F7E0D50D261355230078A15E /* TipCalViewController.swift */,
 				F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */,
 				F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */,
+				F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */,
 				F7881B5625D713370026F2F0 /* ViewController.swift in Sources */,
 				F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */,
+				F72B2E9728413E7D00424A1A /* ColumnFlowLayout.swift in Sources */,
 				F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */,
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,

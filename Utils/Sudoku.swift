@@ -8,13 +8,12 @@
 import Foundation
 class Sudoku{
     var mat: [[Int]] = [[]]
-    var numberOfRowsColumns: Int// Number of rows and columns
+    let numberOfRowsColumns: Int = 9// Number of rows and columns
     var numberOfMissingDigits: Int //Number of digits missing
     var squareRootValue: Int = 0
     
-    init(numberOfRowsColumns: Int, numberOfMissingDigits: Int){
+    init(numberOfMissingDigits: Int){
         self.numberOfMissingDigits = numberOfMissingDigits
-        self.numberOfRowsColumns = numberOfRowsColumns
         self.squareRootValue = Int(sqrt(Double(numberOfRowsColumns)))
         mat = Array(repeating: Array(repeating: 0, count: numberOfRowsColumns), count: numberOfRowsColumns)
     }

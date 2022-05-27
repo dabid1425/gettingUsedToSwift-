@@ -7,12 +7,37 @@
 
 import UIKit
 
-class SudokuBoardViewController: UIViewController {
+class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var sudokuBoard: UICollectionView!
+    
+    let columnLayout = ColumnFlowLayout(
+           cellsPerRow: 9,
+           minimumInteritemSpacing: 10,
+           minimumLineSpacing: 10,
+           sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+       )
+
+       override func viewDidLoad() {
+           super.viewDidLoad()
+           sudokuBoard.delegate = self
+           sudokuBoard.dataSource = self
+           sudokuBoard.collectionViewLayout = columnLayout
+           sudokuBoard.contentInsetAdjustmentBehavior = .always
+           sudokuBoard.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+       }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 81
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
+        UICollectionViewCell {
+            let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+            cell.backgroundColor = UIColor.orange
+            return cell
     }
     
 
@@ -25,5 +50,17 @@ class SudokuBoardViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
+
+//extension SudokuBoardViewController:  UICollectionViewDataSource{
+//
+//
+//
+//
+//
+//       override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+//           cell.backgroundColor = UIColor.orange
+//           return cell
+//       }
+//}

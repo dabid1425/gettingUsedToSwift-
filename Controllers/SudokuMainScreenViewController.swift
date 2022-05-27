@@ -14,9 +14,8 @@ class SudokuMainScreenViewController: UIViewController {
     }
     
     func sudokuGame(){
-        let N:Int = 9
         let K:Int = 20
-        let sudoku = Sudoku(numberOfRowsColumns: N, numberOfMissingDigits: K);
+        let sudoku = Sudoku(numberOfMissingDigits: K);
         sudoku.fillValues();
         sudoku.printBoard();
     }
