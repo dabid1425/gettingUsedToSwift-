@@ -20,7 +20,7 @@ class Sudoku{
     }
     func fillValues(){
         fillDiagonal();
-        fillRemaining(row: 0,column: squareRootValue)
+        fillRemaining(i: 0,j: squareRootValue)
         //removeKDigits()
     }
     
@@ -50,9 +50,9 @@ class Sudoku{
     func fillBox(row: Int, column: Int){
         var num: Int
         var rowIndex:Int = 0
-        while (rowIndex < squareRootValue) {
+        while (rowIndex < squareRootValue - 1) {
             var columnIndex:Int = 0
-            while (columnIndex < squareRootValue) {
+            while (columnIndex < squareRootValue - 1) {
                 repeat{
                     num = randomGenerator(numberOfRowsColumns)
                     
@@ -65,16 +65,16 @@ class Sudoku{
     }
     
     func randomGenerator(_ n:Int) -> Int {
-        return Int.random(in: 1..<n)
+        return Int(Int(floor(Double.random(in: 0..<1))) * n + 1)
     } // end
-    func checkIfSafe(row: Int, column: Int, num: Int) -> Bool{
-        return (unUsedInRow(row: row, number: num) && unUsedInColumn(column: column, number: num) && unUsedInBox(row: row - row%squareRootValue, column: column - column%squareRootValue, num: num))
+    func checkIfSafe(i: Int, j: Int, num: Int) -> Bool{
+        return (unUsedInRow(i: i, number: num) && unUsedInColumn(j: j, number: num) && unUsedInBox(row: i - i%squareRootValue, column: j - j%squareRootValue, num: num))
     }
     
-    func unUsedInRow(row: Int, number: Int) -> Bool{
+    func unUsedInRow(i: Int, number: Int) -> Bool{
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
-            if(mat[row][columnIndex] == number){
+            if(mat[i][columnIndex] == number){
                 return false
             }
             columnIndex+=1
@@ -82,10 +82,10 @@ class Sudoku{
         return true
     }
     
-    func unUsedInColumn(column: Int, number: Int) -> Bool{
+    func unUsedInColumn(j: Int, number: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
-            if(mat[rowIndex][column] == number){
+            if(mat[rowIndex][j] == number){
                 return false
             }
             rowIndex+=1
@@ -97,9 +97,9 @@ class Sudoku{
     
     
     
-    func fillRemaining(row: Int, column: Int) -> Bool{
-        var rowVal = row
-        var columnVal = column
+    func fillRemaining(i: Int, j: Int) -> Bool{
+        var rowVal = i
+        var columnVal = j
         if (columnVal >= numberOfRowsColumns && rowVal < numberOfRowsColumns - 1){
             rowVal+=1
             columnVal = 0
@@ -112,27 +112,26 @@ class Sudoku{
                 columnVal = squareRootValue
             }
         } else if (rowVal < numberOfRowsColumns - squareRootValue){
-            if (columnVal == Int(row/squareRootValue) * squareRootValue){
+            if (columnVal == Int(rowVal/squareRootValue) * squareRootValue){
                 columnVal = columnVal + squareRootValue
             }
         } else {
             if (columnVal == numberOfRowsColumns - squareRootValue){
                 rowVal+=1
                 columnVal = 0
-                if (row >= numberOfRowsColumns){
+                if (rowVal >= numberOfRowsColumns){
                     return true
                 }
             }
         }
         var num: Int = 1
         while (num <= numberOfRowsColumns){
-            if (checkIfSafe(row: rowVal, column: columnVal, num: num)){
+            if (checkIfSafe(i: rowVal, j: columnVal, num: num)){
                 mat[rowVal][columnVal] = num
-                columnVal+=1
-                if (fillRemaining(row: rowVal, column: columnVal)){
+                if (fillRemaining(i: rowVal, j: columnVal + 1)){
                     return true
                 }
-                //mat[row][column] = 0;
+                mat[rowVal][columnVal] = 0;
             }
             num+=1
         }
