@@ -8,6 +8,7 @@
 import Foundation
 class Sudoku{
     var mat: [[Int]] = [[]]
+    var correctAnswer: [[Int]] = [[]]
     let numberOfRowsColumns: Int = 9// Number of rows and columns
     var numberOfMissingDigits: Int //Number of digits missing
     var squareRootValue: Int = 0
@@ -19,10 +20,8 @@ class Sudoku{
     }
     func fillValues(){
         fillDiagonal();
-        var zeroIndex = 0
-        var dummyVal = squareRootValue
-        fillRemaining(row: &zeroIndex,column: &dummyVal)
-        removeKDigits()
+        fillRemaining(row: 0,column: squareRootValue)
+        //removeKDigits()
     }
     
     func fillDiagonal(){
@@ -51,9 +50,9 @@ class Sudoku{
     func fillBox(row: Int, column: Int){
         var num: Int
         var rowIndex:Int = 0
-        while (rowIndex < squareRootValue - 1) {
+        while (rowIndex < squareRootValue) {
             var columnIndex:Int = 0
-            while (columnIndex < squareRootValue - 1) {
+            while (columnIndex < squareRootValue) {
                 repeat{
                     num = randomGenerator(numberOfRowsColumns)
                     
@@ -66,7 +65,7 @@ class Sudoku{
     }
     
     func randomGenerator(_ n:Int) -> Int {
-        return Int(arc4random_uniform(UInt32(n)))
+        return Int.random(in: 1..<n)
     } // end
     func checkIfSafe(row: Int, column: Int, num: Int) -> Bool{
         return (unUsedInRow(row: row, number: num) && unUsedInColumn(column: column, number: num) && unUsedInBox(row: row - row%squareRootValue, column: column - column%squareRootValue, num: num))
@@ -93,63 +92,66 @@ class Sudoku{
         }
         return true
     }
-   
     
     
     
     
-    func fillRemaining(row: inout Int, column: inout Int) -> Bool{
-        if (column >= numberOfRowsColumns && row < numberOfRowsColumns - 1){
-            row+=1
-            column = 0
+    
+    func fillRemaining(row: Int, column: Int) -> Bool{
+        var rowVal = row
+        var columnVal = column
+        if (columnVal >= numberOfRowsColumns && rowVal < numberOfRowsColumns - 1){
+            rowVal+=1
+            columnVal = 0
         }
-            if (row >= numberOfRowsColumns && column >= numberOfRowsColumns){
-                return true
+        if (rowVal >= numberOfRowsColumns && columnVal >= numberOfRowsColumns){
+            return true
+        }
+        if (rowVal < squareRootValue){
+            if (columnVal < squareRootValue){
+                columnVal = squareRootValue
             }
-            if (row < squareRootValue){
-                if (column < squareRootValue){
-                    column = squareRootValue
-                }
-            } else if (row < numberOfRowsColumns - squareRootValue){
-                if (column == Int(row/squareRootValue) * squareRootValue){
-                    column = column + squareRootValue
-                }
-            } else {
-                if (column == numberOfRowsColumns - squareRootValue){
-                    row+=1
-                    column = 0
-                    if (row >= numberOfRowsColumns){
-                        return true
-                    }
+        } else if (rowVal < numberOfRowsColumns - squareRootValue){
+            if (columnVal == Int(row/squareRootValue) * squareRootValue){
+                columnVal = columnVal + squareRootValue
+            }
+        } else {
+            if (columnVal == numberOfRowsColumns - squareRootValue){
+                rowVal+=1
+                columnVal = 0
+                if (row >= numberOfRowsColumns){
+                    return true
                 }
             }
-            var num: Int = 1
-            while (num <= numberOfRowsColumns){
-                if (checkIfSafe(row: row, column: column, num: num)){
-                    mat[row][column] = num
-                    column+=1
-                    if (fillRemaining(row: &row, column: &column)){
-                        return true
-                    }
-                    mat[row][column] = 0;
+        }
+        var num: Int = 1
+        while (num <= numberOfRowsColumns){
+            if (checkIfSafe(row: rowVal, column: columnVal, num: num)){
+                mat[rowVal][columnVal] = num
+                columnVal+=1
+                if (fillRemaining(row: rowVal, column: columnVal)){
+                    return true
                 }
-                num+=1
+                //mat[row][column] = 0;
             }
+            num+=1
+        }
         return false;
     }
     
     
     func removeKDigits(){
         var count: Int = numberOfMissingDigits
+        correctAnswer = mat
         while (count != 0){
-            let cellId = randomGenerator((numberOfRowsColumns * numberOfRowsColumns))
+            let cellId = randomGenerator((numberOfRowsColumns * numberOfRowsColumns)) - 1
             let i = Int(cellId / numberOfRowsColumns)
             var j = cellId % 9
             if (j != 0){
                 j = j - 1
                 if (mat[i][j] != 0 ){
                     count-=1
-                    mat[i][j] = 0
+                    //  mat[i][j] = 0
                 }
             }
         }
@@ -170,5 +172,6 @@ class Sudoku{
         print("")
         print("")
         print("")
+        
     }
 }

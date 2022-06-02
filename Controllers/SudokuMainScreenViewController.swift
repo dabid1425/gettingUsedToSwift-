@@ -9,10 +9,28 @@ import UIKit
 
 class SudokuMainScreenViewController: UIViewController {
     
+    @IBOutlet weak var loadGame: UIButton!
+    @IBOutlet weak var newGame: UIButton!
+    var newGameBoolean:Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        if (sender.tag == newGame.tag){
+            newGameBoolean = true
+            
+        } else if (sender.tag == loadGame.tag){
+            newGameBoolean = false
+        }
+        self.performSegue(withIdentifier: "ShowBoard", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! SudokuBoardViewController
+        vc.newGame = newGameBoolean
+    }
+    
     
     /*
      // MARK: - Navigation
