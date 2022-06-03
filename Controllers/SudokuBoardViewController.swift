@@ -6,23 +6,22 @@
 //
 
 import UIKit
-
+import RealmSwift
 class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
-    
-    
-    //    func sudokuGame(){
-    //        let K:Int = 20
-    //        let sudoku = Sudoku(numberOfMissingDigits: K);
-    //        sudoku.fillValues();
-    //        sudoku.printBoard();
-    //    }
-    //
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        sudokuGame()
-    //    }
     
     @IBOutlet weak var sudokuBoard: UICollectionView!
     var newGame:Bool = false
+    let realm = try! Realm()
+    
+    
+    var sudokuGame: Results<SudokuRow>?
+    var selectedCategory : SudokuRow? {
+        didSet{
+            loadItems()
+        }
+    }
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 9,
         minimumInteritemSpacing: 10,
@@ -38,14 +37,42 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuBoard.contentInsetAdjustmentBehavior = .always
         sudokuBoard.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SudokuCell")
         if (newGame) {
-            let K:Int = 0
+            let K:Int = 20
             let sudoku = Sudoku(numberOfMissingDigits: K);
             sudoku.fillValues();
-            sudoku.printBoard();
-        } else {
             
+            
+            //sudoku.printBoard();
+        } else {
+            loadItems()
         }
     }
+    
+    func loadItems(){
+        
+        sudokuGame = realm.objects(SudokuRow.self)
+        
+        //USING COREDATA
+        //        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        //        do{
+        //            categories =  try context.fetch(request)
+        //            self.tableView.reloadData()
+        //        }catch{
+        //
+        //        }
+    }
+    
+    func saveData(sudokuGame: SudokuRow){
+        //Using Realm
+        do{
+            try realm.write(){
+                realm.add(sudokuGame)
+            }
+            
+        }catch{
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 81

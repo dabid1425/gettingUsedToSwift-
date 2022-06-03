@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC6264B0A2900D47408 /* Calculator.swift */; };
 		F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC8264B0AEF00D47408 /* UnitConverter.swift */; };
 		F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */; };
+		F72A2C83284A492400AB85D7 /* SudokuBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72A2C82284A492400AB85D7 /* SudokuBox.swift */; };
+		F72A2C86284A4A6700AB85D7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F72A2C85284A4A6700AB85D7 /* Realm */; };
+		F72A2C88284A4A6700AB85D7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F72A2C87284A4A6700AB85D7 /* RealmSwift */; };
+		F72A2C8A284A4B7900AB85D7 /* SudokuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72A2C89284A4B7900AB85D7 /* SudokuRow.swift */; };
 		F72B2E9728413E7D00424A1A /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */; };
 		F7358DD7284908D7005AE562 /* SudokuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7358DD5284908D7005AE562 /* SudokuCollectionViewCell.swift */; };
 		F7358DD8284908D7005AE562 /* SudokuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7358DD6284908D7005AE562 /* SudokuCollectionViewCell.xib */; };
@@ -34,6 +38,8 @@
 		F711ADC6264B0A2900D47408 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		F711ADC8264B0AEF00D47408 /* UnitConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitConverter.swift; sourceTree = "<group>"; };
 		F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorViewController.swift; sourceTree = "<group>"; };
+		F72A2C82284A492400AB85D7 /* SudokuBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuBox.swift; sourceTree = "<group>"; };
+		F72A2C89284A4B7900AB85D7 /* SudokuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuRow.swift; sourceTree = "<group>"; };
 		F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
 		F7358DD5284908D7005AE562 /* SudokuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuCollectionViewCell.swift; sourceTree = "<group>"; };
 		F7358DD6284908D7005AE562 /* SudokuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SudokuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72A2C88284A4A6700AB85D7 /* RealmSwift in Frameworks */,
+				F72A2C86284A4A6700AB85D7 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +98,8 @@
 		33D26422283BF1FD004E4E97 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F72A2C82284A492400AB85D7 /* SudokuBox.swift */,
+				F72A2C89284A4B7900AB85D7 /* SudokuRow.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -151,6 +161,10 @@
 			dependencies = (
 			);
 			name = GettingUsedToSwift;
+			packageProductDependencies = (
+				F72A2C85284A4A6700AB85D7 /* Realm */,
+				F72A2C87284A4A6700AB85D7 /* RealmSwift */,
+			);
 			productName = GettingUsedToSwift;
 			productReference = F7881B4E25D713370026F2F0 /* GettingUsedToSwift.app */;
 			productType = "com.apple.product-type.application";
@@ -178,6 +192,9 @@
 				Base,
 			);
 			mainGroup = F7881B4525D713370026F2F0;
+			packageReferences = (
+				F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = F7881B4F25D713370026F2F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F711ADC3264AF88800D47408 /* UnitConverterViewController.swift in Sources */,
+				F72A2C83284A492400AB85D7 /* SudokuBox.swift in Sources */,
 				F7358DD7284908D7005AE562 /* SudokuCollectionViewCell.swift in Sources */,
 				F7663EB525DD4B3F00E4A8D6 /* CountDownViewController.swift in Sources */,
 				33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */,
@@ -220,6 +238,7 @@
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,
 				F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */,
+				F72A2C8A284A4B7900AB85D7 /* SudokuRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +448,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F72A2C85284A4A6700AB85D7 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		F72A2C87284A4A6700AB85D7 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F7881B4625D713370026F2F0 /* Project object */;
 }
