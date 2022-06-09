@@ -7,7 +7,7 @@
 
 import UIKit
 import RealmSwift
-class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var sudokuBoard: UICollectionView!
     var newGame:Bool = false
@@ -89,35 +89,27 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
     UICollectionViewCell {
         if let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath) as? SudokuBoardElementViewCell{
+            cell.layer.borderColor = UIColor.blue.cgColor
+            cell.layer.borderWidth = 1
             //setCharacter
-            cell.setLabel(label: String(sudoku.getMatBoard()[indexPath.section][indexPath.item].boxValue))
+            if (sudoku.getMatBoard()[indexPath.section][indexPath.item].hidden){
+                cell.setLabel(label: "0")
+            } else {
+                cell.setLabel(label: String(sudoku.getMatBoard()[indexPath.section][indexPath.item].boxValue))
+            }
+            
             return cell
         }
         let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath)
         cell.backgroundColor = UIColor.green
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
 }
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
-//extension SudokuBoardViewController:  UICollectionViewDataSource{
-//
-//
-//
-//
-//
-//       override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-//           cell.backgroundColor = UIColor.orange
-//           return cell
-//       }
-//}

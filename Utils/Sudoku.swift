@@ -28,8 +28,7 @@ class Sudoku{
     func fillValues(){
         fillDiagonal();
         fillRemaining(i: 0,j: squareRootValue)
-        printBoard()
-        //removeKDigits()
+        removeKDigits()
     }
     
     func fillDiagonal(){
