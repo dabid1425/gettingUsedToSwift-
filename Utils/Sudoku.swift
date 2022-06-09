@@ -143,7 +143,7 @@ class Sudoku{
                 if (fillRemaining(i: rowVal, j: columnVal + 1)){
                     return true
                 }
-                mat[rowVal][columnVal].hidden = true;
+                mat[rowVal][columnVal].boxValue = 0;
             }
             num+=1
         }
