@@ -28,7 +28,8 @@ class Sudoku{
     func fillValues(){
         fillDiagonal();
         fillRemaining(i: 0,j: squareRootValue)
-        removeKDigits()
+        printBoard()
+        //removeKDigits()
     }
     
     func fillDiagonal(){
@@ -44,7 +45,6 @@ class Sudoku{
         while (rowIndex < squareRootValue) {
             var columnIndex:Int = 0
             while (columnIndex < squareRootValue) {
-                let boxVal = mat[row + rowIndex][column + columnIndex].boxValue
                 if (mat[row + rowIndex][column + columnIndex].boxValue == num) {
                     return false
                 }
@@ -53,6 +53,10 @@ class Sudoku{
             rowIndex+=1
         }
         return true
+    }
+    
+    func getMatBoard() -> [[SudokuBox]]{
+        return mat
     }
     
     func fillBox(row: Int, column: Int){
@@ -161,6 +165,23 @@ class Sudoku{
                 }
             }
         }
+    }
+    func printBoard(){
+        var i:Int = 0
+        while (i < numberOfRowsColumns) {
+            var j:Int = 0
+            var row:String = ""
+            while (j < numberOfRowsColumns) {
+                row.append("\(mat[i][j].boxValue) ")
+                j+=1
+            }
+            i+=1
+            print(row)
+        }
+        print("")
+        print("")
+        print("")
+        
     }
     
 }

@@ -12,7 +12,8 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var sudokuBoard: UICollectionView!
     var newGame:Bool = false
     let realm = try! Realm()
-    
+    let K:Int = 20
+    var sudoku: Sudoku!;
     
     var sudokuGame: Results<SudokuRow>?
     var selectedCategory : SudokuRow? {
@@ -35,10 +36,9 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuBoard.dataSource = self
         sudokuBoard.collectionViewLayout = columnLayout
         sudokuBoard.contentInsetAdjustmentBehavior = .always
-        sudokuBoard.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SudokuCell")
+        sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
         if (newGame) {
-            let K:Int = 20
-            let sudoku = Sudoku(numberOfMissingDigits: K);
+            sudoku = Sudoku(numberOfMissingDigits: K)
             sudoku.fillValues();
             
             
@@ -51,6 +51,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     func loadItems(){
         
         sudokuGame = realm.objects(SudokuRow.self)
+        self.sudokuBoard.reloadData()
         
         //USING COREDATA
         //        let request : NSFetchRequest<Category> = Category.fetchRequest()
@@ -74,28 +75,39 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        //return columns
+        return sudoku.getMatBoard().count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 81
+        //return rows
+        return sudoku.getMatBoard()[section].count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
     UICollectionViewCell {
+        if let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath) as? SudokuBoardElementViewCell{
+            //setCharacter
+            cell.setLabel(label: String(sudoku.getMatBoard()[indexPath.section][indexPath.item].boxValue))
+            return cell
+        }
         let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath)
         cell.backgroundColor = UIColor.green
         return cell
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 //extension SudokuBoardViewController:  UICollectionViewDataSource{
 //
