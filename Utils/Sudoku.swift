@@ -10,9 +10,22 @@ import RealmSwift
 class Sudoku{
     var mat:[[SudokuBox]] = []
     let numberOfRowsColumns: Int = 9// Number of rows and columns
-    var numberOfMissingDigits: Int //Number of digits missing
+    var numberOfMissingDigits: Int = 0 //Number of digits missing
     var squareRootValue: Int = 0
     
+    init(previousBoard: Results<SudokuRow>){
+        var rowIndex: Int = 0
+        for i in previousBoard{
+            var aRow : [SudokuBox] = []
+            var columnIndex: Int = 0
+            for j in i.currentRow {
+                aRow.append(j)
+                columnIndex+=1
+            }
+            rowIndex+=1
+            mat.append(aRow)
+        }
+    }
     init(numberOfMissingDigits: Int){
         self.numberOfMissingDigits = numberOfMissingDigits
         self.squareRootValue = Int(sqrt(Double(numberOfRowsColumns)))

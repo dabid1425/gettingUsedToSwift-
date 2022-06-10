@@ -40,8 +40,14 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         if (newGame) {
             sudoku = Sudoku(numberOfMissingDigits: K)
             sudoku.fillValues();
-            
-            
+            for i in 0..<sudoku.getMatBoard().count{
+                let sudokuElement = SudokuRow()
+                sudokuElement.rowNumber = i
+                for j in 0..<sudoku.getMatBoard()[i].count{
+                    sudokuElement.currentRow.append(sudoku.getMatBoard()[i][j])
+                }
+                self.saveData(sudokuGame: sudokuElement)
+            }
             //sudoku.printBoard();
         } else {
             loadItems()
@@ -50,27 +56,21 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     
     func loadItems(){
         
-        sudokuGame = realm.objects(SudokuRow.self)
-        self.sudokuBoard.reloadData()
-        
-        //USING COREDATA
-        //        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        //        do{
-        //            categories =  try context.fetch(request)
-        //            self.tableView.reloadData()
-        //        }catch{
-        //
-        //        }
+        if let sudokuGame = realm.objects(SudokuRow.self) as Results<SudokuRow>? {
+            sudoku = Sudoku(previousBoard: sudokuGame)
+        }
     }
     
     func saveData(sudokuGame: SudokuRow){
         //Using Realm
         do{
             try realm.write(){
+                print("\(sudokuGame)")
                 realm.add(sudokuGame)
             }
             
         }catch{
+            print("You did done fucked it")
         }
     }
     
