@@ -44,6 +44,10 @@ class Sudoku{
         removeKDigits()
     }
     
+    func setBoxToNumber(row:Int, column:Int, val:Int){
+        
+    }
+    
     func fillDiagonal(){
         var index:Int = 0
         while index < numberOfRowsColumns{

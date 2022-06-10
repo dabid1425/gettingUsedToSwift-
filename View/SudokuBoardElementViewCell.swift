@@ -14,5 +14,7 @@ class SudokuBoardElementViewCell: UICollectionViewCell {
     func setLabel(label:String) {
         sudokuLabel?.text = label
     }
-    
+    func setAlphaValue(alphaValue: CGFloat){
+        sudokuLabel?.alpha = alphaValue
+    }
 }
