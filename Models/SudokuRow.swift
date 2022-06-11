@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class SudokuRow: Object {
+    @objc dynamic var initialized: Bool = false
     @objc dynamic var rowNumber: Int = 0
     let currentRow = List<SudokuBox>()
 }

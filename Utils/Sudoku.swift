@@ -8,10 +8,12 @@
 import Foundation
 import RealmSwift
 class Sudoku{
+    let realm = try! Realm()
     var mat:[[SudokuBox]] = []
     let numberOfRowsColumns: Int = 9// Number of rows and columns
     var numberOfMissingDigits: Int = 0 //Number of digits missing
     var squareRootValue: Int = 0
+    var isEmpty = true
     
     init(previousBoard: Results<SudokuRow>){
         var rowIndex: Int = 0
@@ -19,6 +21,7 @@ class Sudoku{
             var aRow : [SudokuBox] = []
             var columnIndex: Int = 0
             for j in i.currentRow {
+                isEmpty = !i.initialized
                 aRow.append(j)
                 columnIndex+=1
             }
@@ -44,10 +47,25 @@ class Sudoku{
         removeKDigits()
     }
     
-    func setBoxToNumber(row:Int, column:Int, val:Int){
-        
-    }
     
+    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int) -> Bool{
+        if (pencilSelected) {
+         
+            let sepList = mat[row][column].possibleValues.components(separatedBy: " ")
+            for i in sepList {
+                if (Int(i) == numberSelected){
+                    return false
+                }
+            }
+        } else {
+            if (mat[row][column].isHidden){
+                if (mat[row][column].boxValue == numberSelected){
+                   return true
+                }
+            }
+        }
+        return true
+    }
     func fillDiagonal(){
         var index:Int = 0
         while index < numberOfRowsColumns{
@@ -175,9 +193,9 @@ class Sudoku{
             var j = cellId % 9
             if (j != 0){
                 j = j - 1
-                if (!mat[i][j].hidden){
+                if (!mat[i][j].isHidden){
                     count-=1
-                    mat[i][j].hidden = true
+                    mat[i][j].isHidden = true
                 }
             }
         }

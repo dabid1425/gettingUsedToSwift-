@@ -42,6 +42,7 @@
                 </constraints>
             </collectionViewCellContentView>
             <connections>
+                <outlet property="collectionView" destination="uti-Xz-sgW" id="ZOZ-oc-OOL"/>
                 <outlet property="sudokuLabel" destination="zwd-Ic-NMy" id="8NT-Y9-alP"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="104.46428571428571"/>
