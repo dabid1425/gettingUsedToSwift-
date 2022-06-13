@@ -8,7 +8,6 @@
 import Foundation
 import RealmSwift
 class Sudoku{
-    let realm = try! Realm()
     var mat:[[SudokuBox]] = []
     let numberOfRowsColumns: Int = 9// Number of rows and columns
     var numberOfMissingDigits: Int = 0 //Number of digits missing
@@ -48,23 +47,40 @@ class Sudoku{
     }
     
     
-    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int) -> Bool{
+    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm ){
         if (pencilSelected) {
-         
-            let sepList = mat[row][column].possibleValues.components(separatedBy: " ")
-            for i in sepList {
-                if (Int(i) == numberSelected){
-                    return false
+            if (mat[row][column].possibleValues.contains(String(numberSelected))){
+                do {
+                    try realm.write{
+                        //realm.delete(item)
+                        mat[row][column].possibleValues = mat[row][column].possibleValues.replacingOccurrences(of: String(numberSelected), with: "", options: NSString.CompareOptions.literal, range: nil)
+                    }
+                } catch {
                 }
+               
+            } else {
+                do {
+                    try realm.write{
+                        //realm.delete(item)
+                        mat[row][column].possibleValues.append(String(numberSelected))
+                    }
+                } catch {
+                }
+                
             }
         } else {
             if (mat[row][column].isHidden){
                 if (mat[row][column].boxValue == numberSelected){
-                   return true
+                    do {
+                        try realm.write{
+                            //realm.delete(item)
+                            mat[row][column].isSolved = true
+                        }
+                    } catch {
+                    }
                 }
             }
         }
-        return true
     }
     func fillDiagonal(){
         var index:Int = 0

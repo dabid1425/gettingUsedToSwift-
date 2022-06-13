@@ -39,10 +39,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     @IBAction func buttonClicked(_ sender: UIButton) {
         switch sender.tag{
         case 1,2,3,4,5,6,7,8,9 :
-            if(sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected)){
-                
-            }
-            self.saveData()
+            sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)
             self.sudokuBoard.reloadData()
         case 10 :
             print("10 clicked")
