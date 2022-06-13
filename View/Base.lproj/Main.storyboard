@@ -378,7 +378,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-Jy-5aM">
                                 <rect key="frame" x="0.0" y="88" width="375" height="559"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="1T0-pI-HGt"/>
+                                <collectionViewLayout key="collectionViewLayout" id="9kr-Mq-UZP"/>
                                 <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="Nrs-N1-Lwv" id="6L5-95-kHJ"/>
