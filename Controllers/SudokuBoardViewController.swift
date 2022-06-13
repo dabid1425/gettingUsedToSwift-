@@ -81,11 +81,15 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             sudoku = Sudoku(previousBoard: sudokuGame)
             
             if (sudoku.isEmpty){
-                let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Add", style: .default) { [self] (action) in
+                let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in
                     self.newGameFunc()
                 }
+                let cancel = UIAlertAction(title: "Go back", style: .default) { [self] (action) in
+                    navigationController?.popViewController(animated: true)
+                }
                 alert.addAction(action)
+                alert.addAction(cancel)
                 present(alert, animated: true, completion: nil)
                 self.sudokuBoard.reloadData()
             }

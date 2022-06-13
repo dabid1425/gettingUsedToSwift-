@@ -47,7 +47,7 @@ class Sudoku{
     }
     
     
-    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm ){
+    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm){
         if (pencilSelected) {
             if (mat[row][column].possibleValues.contains(String(numberSelected))){
                 do {
@@ -62,7 +62,7 @@ class Sudoku{
                 do {
                     try realm.write{
                         //realm.delete(item)
-                        mat[row][column].possibleValues.append(String(numberSelected))
+                        self.mat[row][column].possibleValues.append(String(numberSelected))
                     }
                 } catch {
                 }
