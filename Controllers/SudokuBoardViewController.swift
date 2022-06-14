@@ -14,7 +14,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     var newGame:Bool = false
     var pencilSelected:Bool = false
     let realm = try! Realm()
-    let K:Int = 20
+    
     var sudoku: Sudoku!;
     var sudokuRowSelected: Int = -1
     var sudokuColumnSelected: Int = -1
@@ -55,13 +55,9 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         }
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        sudokuBoard.delegate = self
-        sudokuBoard.dataSource = self
-        sudokuBoard.collectionViewLayout = columnLayout
-        sudokuBoard.contentInsetAdjustmentBehavior = .always
-        sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if (newGame) {
             newGameFunc()
             //sudoku.printBoard();
@@ -69,11 +65,51 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             loadItems()
         }
     }
-    func newGameFunc(){
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sudokuBoard.delegate = self
+        sudokuBoard.dataSource = self
+        sudokuBoard.collectionViewLayout = columnLayout
+        sudokuBoard.contentInsetAdjustmentBehavior = .always
+        sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
+        
+    }
+    func createNewGame(K: Int){
+        do {
+            try realm.write{
+                realm.deleteAll()
+            }
+        } catch {
+        }
         sudoku = Sudoku(numberOfMissingDigits: K)
         sudoku.fillValues();
         saveData()
         self.sudokuBoard.reloadData()
+    }
+    func newGameFunc(){
+        let alert = UIAlertController(title: "Select game difficulty ", message: "", preferredStyle: .actionSheet)
+        let easy = UIAlertAction(title: "Easy", style: .default) { [self] (action) in
+            createNewGame(K: 20)
+        }
+        let medium = UIAlertAction(title: "Medium", style: .default) { [self] (action) in
+            createNewGame(K: 30)
+        }
+        let hard = UIAlertAction(title: "Hard", style: .default) { [self] (action) in
+            createNewGame(K: 40)
+        }
+        let extremlyHard = UIAlertAction(title: "Extremly Hard", style: .default) { [self] (action) in
+            createNewGame(K: 50)
+        }
+        let extreme = UIAlertAction(title: "Extreme", style: .default) { [self] (action) in
+            createNewGame(K: 60)
+        }
+        alert.addAction(easy)
+        alert.addAction(medium)
+        alert.addAction(hard)
+        alert.addAction(extremlyHard)
+        alert.addAction(extreme)
+        present(alert, animated: true, completion: nil)
+        
     }
     func loadItems(){
         
@@ -120,11 +156,17 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         //return columns
+        if (sudoku == nil) {
+            return 0
+        }
         return sudoku.getMatBoard().count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return rows
+        if (sudoku == nil) {
+            return 0
+        }
         return sudoku.getMatBoard()[section].count
         
     }
@@ -154,12 +196,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                     sudokuColumnSelected = -1
                     cell.setSelectValue()
                     cell.setViewLabel(color: .white)
-                   
+                    
                 } else {
                     cell.setViewLabel(color: .yellow)
                     cell.setSelectValue()
                 }
-               
+                
             } else {
                 cell.setViewLabel(color: .white)
             }
