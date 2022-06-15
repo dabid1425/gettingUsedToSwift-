@@ -38,9 +38,11 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     )
     
     @IBAction func buttonClicked(_ sender: UIButton) {
+        indexCount = -1
+        changeColorSelectionOrder = false
         switch sender.tag{
         case 1,2,3,4,5,6,7,8,9 :
-            sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)
+            sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuColumnSelected, column: sudokuRowSelected, realm:realm)
             self.sudokuBoard.reloadData()
         case 10 :
             print("10 clicked")
@@ -115,7 +117,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     func loadItems(){
         
         if let sudokuGame = realm.objects(SudokuRow.self) as Results<SudokuRow>? {
-            sudoku = Sudoku(previousBoard: sudokuGame)
+            sudoku = Sudoku(previousBoard: sudokuGame, realm: realm)
             
             if (sudoku.isEmpty){
                 let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
@@ -201,28 +203,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 for i in elment.possibleValues {
                     possibleValuesLabel.append("\(i) ")
                 }
-                cell.changeLabelView(possibleValues: true)
-                cell.setLabel(label: possibleValuesLabel)
+                cell.setLabel(sudokuLabel: "", hints: possibleValuesLabel)
             }else {
-                cell.changeLabelView(possibleValues: false)
-                cell.setLabel(label: String(elment.boxValue))
+                cell.setLabel(sudokuLabel: "\(String(elment.boxValue))", hints: "")
                 cell.setLabelColor(color: (elment.isHidden || elment.isSolved) ? .blue : .black )
             }
-            if  indexPath.row == sudokuRowSelected && indexPath.section == sudokuColumnSelected {
-                if (cell.getSelected()){
-                    sudokuRowSelected = -1
-                    sudokuColumnSelected = -1
-                    cell.setSelectValue()
-                    cell.setViewLabel(color: .white)
-                    
-                } else {
-                    cell.setViewLabel(color: .yellow)
-                    cell.setSelectValue()
-                }
-                
-            } else {
-                cell.setViewLabel(color: .white)
-            }
+            cell.setViewLabel(color: elment.isSelected ?  .yellow :.white)
             return cell
         }
         let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath)
@@ -234,10 +220,13 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                         didSelectItemAt indexPath: IndexPath) {
         sudokuRowSelected = indexPath.row
         sudokuColumnSelected = indexPath.section
+        indexCount = -1
+        changeColorSelectionOrder = false
+        sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
         self.sudokuBoard.reloadData()
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-                        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: sudokuBoard.frame.size.height/10, height: sudokuBoard.frame.size.height/10)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
+//                        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: sudokuBoard.frame.size.height/10, height: sudokuBoard.frame.size.height/10)
+//    }
 }

@@ -26,7 +26,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqy-Zs-J4A">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="svsv" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqy-Zs-J4A">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -35,14 +35,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="nqy-Zs-J4A" secondAttribute="bottom" constant="168" id="3qj-2u-kRR"/>
-                            <constraint firstItem="nqy-Zs-J4A" firstAttribute="leading" secondItem="uti-Xz-sgW" secondAttribute="leading" id="9gt-6E-NN5"/>
+                            <constraint firstAttribute="bottom" secondItem="nqy-Zs-J4A" secondAttribute="bottom" constant="168" id="4xi-HG-JCV"/>
                             <constraint firstAttribute="trailing" secondItem="zwd-Ic-NMy" secondAttribute="trailing" constant="10" id="AEX-dW-b0A"/>
-                            <constraint firstItem="nqy-Zs-J4A" firstAttribute="top" secondItem="uti-Xz-sgW" secondAttribute="top" id="V5H-eS-chy"/>
+                            <constraint firstItem="nqy-Zs-J4A" firstAttribute="top" secondItem="uti-Xz-sgW" secondAttribute="top" id="Hn1-ng-c5k"/>
                             <constraint firstAttribute="bottom" secondItem="zwd-Ic-NMy" secondAttribute="bottom" constant="10" id="dTz-de-EB4"/>
+                            <constraint firstAttribute="trailing" secondItem="nqy-Zs-J4A" secondAttribute="trailing" id="hV7-H1-FUq"/>
                             <constraint firstItem="zwd-Ic-NMy" firstAttribute="top" secondItem="uti-Xz-sgW" secondAttribute="top" constant="10" id="iCj-UM-Vvl"/>
+                            <constraint firstItem="nqy-Zs-J4A" firstAttribute="leading" secondItem="uti-Xz-sgW" secondAttribute="leading" id="t3W-MX-BKw"/>
                             <constraint firstItem="zwd-Ic-NMy" firstAttribute="leading" secondItem="uti-Xz-sgW" secondAttribute="leading" constant="10" id="u6R-Cg-mfY"/>
-                            <constraint firstAttribute="trailing" secondItem="nqy-Zs-J4A" secondAttribute="trailing" id="vSx-XW-xHm"/>
                         </constraints>
                     </view>
                 </subviews>

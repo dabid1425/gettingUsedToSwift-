@@ -14,13 +14,21 @@ class Sudoku{
     var squareRootValue: Int = 0
     var isEmpty = true
     
-    init(previousBoard: Results<SudokuRow>){
+    init(previousBoard: Results<SudokuRow> , realm: Realm){
         var rowIndex: Int = 0
         for i in previousBoard{
             var aRow : [SudokuBox] = []
             var columnIndex: Int = 0
             for j in i.currentRow {
                 isEmpty = !i.initialized
+                do{
+                    try realm.write{
+                        j.isSelected = false
+                    }
+                }catch{
+                    
+                }
+                
                 aRow.append(j)
                 columnIndex+=1
             }
@@ -46,6 +54,22 @@ class Sudoku{
         removeKDigits()
     }
     
+    func checkSelectedState(row: Int, column: Int,realm: Realm){
+        do {
+            try realm.write{
+                for i in 0..<numberOfRowsColumns{
+                    for j in 0..<numberOfRowsColumns{
+                        if (i == row && j == column){
+                            mat[i][j].isSelected = !mat[i][j].isSelected
+                        } else {
+                            mat[i][j].isSelected = false
+                        }
+                    }
+                }
+            }
+        } catch {
+        }
+    }
     
     func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm){
         if (pencilSelected) {
@@ -57,7 +81,7 @@ class Sudoku{
                     }
                 } catch {
                 }
-               
+                
             } else {
                 do {
                     try realm.write{

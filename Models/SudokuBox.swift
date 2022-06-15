@@ -12,6 +12,7 @@ class SudokuBox: Object {
     @objc dynamic var boxValue: Int = 0
     @objc dynamic var isHidden: Bool = false
     @objc dynamic var isSolved: Bool = false
+    @objc dynamic var isSelected: Bool = false
     var parentCategory = LinkingObjects(fromType: SudokuRow.self, property: "currentRow")
 }
 
