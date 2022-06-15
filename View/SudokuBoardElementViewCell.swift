@@ -11,16 +11,28 @@ class SudokuBoardElementViewCell: UICollectionViewCell {
     
     @IBOutlet weak var sudokuLabel: UILabel!
     
+    @IBOutlet weak var hints: UILabel!
     @IBOutlet weak var collectionView: UIView!
     
     func setLabel(label:String) {
-        sudokuLabel?.text = label
+        if (!sudokuLabel.isHidden){
+            sudokuLabel?.text = label
+        } else {
+            hints?.text = label
+        }
     }
-    func setAlphaValue(alphaValue: CGFloat){
-        sudokuLabel?.alpha = alphaValue
+    
+    func changeLabelView(possibleValues: Bool){
+        sudokuLabel.isHidden = !possibleValues
+        hints.isHidden = possibleValues
     }
+    
     func setLabelColor(color: UIColor){
-        sudokuLabel?.textColor = color
+        if (!sudokuLabel.isHidden){
+            sudokuLabel?.textColor = color
+        } else {
+            hints.textColor = color
+        }
     }
     func setViewLabel(color: UIColor){
         collectionView?.backgroundColor = color

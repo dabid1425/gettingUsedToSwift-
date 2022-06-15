@@ -34,8 +34,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 9,
         minimumInteritemSpacing: 2,
-        minimumLineSpacing: 2,
-        sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        minimumLineSpacing: 2
     )
     
     @IBAction func buttonClicked(_ sender: UIButton) {
@@ -194,6 +193,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         if let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath) as? SudokuBoardElementViewCell{
             cell.layer.borderColor = getColor(indexPath: indexPath)
             cell.layer.borderWidth = 1
+            
             //setCharacter
             let elment = sudoku.getMatBoard()[indexPath.row][indexPath.section]
             if (elment.isHidden && !elment.isSolved){
@@ -201,10 +201,10 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 for i in elment.possibleValues {
                     possibleValuesLabel.append("\(i) ")
                 }
+                cell.changeLabelView(possibleValues: true)
                 cell.setLabel(label: possibleValuesLabel)
-                cell.setAlphaValue(alphaValue: alphaHalf)
             }else {
-                cell.setAlphaValue(alphaValue: alphaFull)
+                cell.changeLabelView(possibleValues: false)
                 cell.setLabel(label: String(elment.boxValue))
                 cell.setLabelColor(color: (elment.isHidden || elment.isSolved) ? .blue : .black )
             }
@@ -235,5 +235,9 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuRowSelected = indexPath.row
         sudokuColumnSelected = indexPath.section
         self.sudokuBoard.reloadData()
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
+                        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: sudokuBoard.frame.size.height/10, height: sudokuBoard.frame.size.height/10)
     }
 }
