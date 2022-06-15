@@ -62,7 +62,14 @@ class Sudoku{
                 do {
                     try realm.write{
                         //realm.delete(item)
-                        self.mat[row][column].possibleValues.append(String(numberSelected))
+                        self.mat[row][column].possibleValues.append("\(String(numberSelected)) ")
+                        var seperatedValues = self.mat[row][column].possibleValues.split(separator: " ")
+                        seperatedValues.sort()
+                        self.mat[row][column].possibleValues = ""
+                        for i in seperatedValues{
+                            self.mat[row][column].possibleValues.append("\(String(i)) ")
+                        }
+                        self.mat[row][column].isHidden = true
                     }
                 } catch {
                 }

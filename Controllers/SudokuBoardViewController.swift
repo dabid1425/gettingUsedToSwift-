@@ -177,7 +177,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             cell.layer.borderColor = UIColor.blue.cgColor
             cell.layer.borderWidth = 1
             //setCharacter
-            let elment = sudoku.getMatBoard()[indexPath.section][indexPath.item]
+            let elment = sudoku.getMatBoard()[indexPath.row][indexPath.section]
             if (elment.isHidden && !elment.isSolved){
                 var possibleValuesLabel: String = ""
                 for i in elment.possibleValues {
@@ -226,5 +226,4 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2
     }
-    
 }
