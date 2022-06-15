@@ -12,6 +12,7 @@ class SudokuBoardElementViewCell: UICollectionViewCell {
     @IBOutlet weak var sudokuLabel: UILabel!
     
     @IBOutlet weak var collectionView: UIView!
+    
     func setLabel(label:String) {
         sudokuLabel?.text = label
     }

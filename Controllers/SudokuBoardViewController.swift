@@ -12,9 +12,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var pencilButton: UIButton!
     @IBOutlet weak var sudokuBoard: UICollectionView!
     var newGame:Bool = false
+    var changeColorSelectionOrder:Bool = false
     var pencilSelected:Bool = false
+    var currentColorBeingUsedIndex: Int = 0
     let realm = try! Realm()
-    
+    var indexCount:Int = -1
+    let colorsForEachSection:[CGColor] = [ UIColor.red.cgColor,UIColor.black.cgColor,UIColor.blue.cgColor]
     var sudoku: Sudoku!;
     var sudokuRowSelected: Int = -1
     var sudokuColumnSelected: Int = -1
@@ -30,11 +33,10 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     
     let columnLayout = ColumnFlowLayout(
         cellsPerRow: 9,
-        minimumInteritemSpacing: 10,
-        minimumLineSpacing: 10,
+        minimumInteritemSpacing: 2,
+        minimumLineSpacing: 2,
         sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     )
-    
     
     @IBAction func buttonClicked(_ sender: UIButton) {
         switch sender.tag{
@@ -171,10 +173,26 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     
+    func getColor(indexPath: IndexPath) -> CGColor{
+        if (currentColorBeingUsedIndex % 3 == 0){
+            if (currentColorBeingUsedIndex % 27 == 0) {
+                indexCount = -1
+                changeColorSelectionOrder = !changeColorSelectionOrder
+            }
+            if (changeColorSelectionOrder){
+                indexCount+=1
+            } else {
+                indexCount-=1
+            }
+        }
+        currentColorBeingUsedIndex+=1
+        return colorsForEachSection[abs(indexCount%3)]
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
     UICollectionViewCell {
         if let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath) as? SudokuBoardElementViewCell{
-            cell.layer.borderColor = UIColor.blue.cgColor
+            cell.layer.borderColor = getColor(indexPath: indexPath)
             cell.layer.borderWidth = 1
             //setCharacter
             let elment = sudoku.getMatBoard()[indexPath.row][indexPath.section]
@@ -205,7 +223,6 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             } else {
                 cell.setViewLabel(color: .white)
             }
-            
             return cell
         }
         let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath)
@@ -218,12 +235,5 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuRowSelected = indexPath.row
         sudokuColumnSelected = indexPath.section
         self.sudokuBoard.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
     }
 }
