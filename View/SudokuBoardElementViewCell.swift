@@ -18,6 +18,12 @@ class SudokuBoardElementViewCell: UICollectionViewCell {
     }
     func setLabelColor(color: UIColor){
             sudokuLabel?.textColor = color
+        if (color == .gray){
+            self.sudokuLabel.font = UIFont.systemFont(ofSize: 10)
+        } else {
+            self.sudokuLabel.font = UIFont.systemFont(ofSize: 15)
+        }
+            
     }
     func setViewLabel(color: UIColor){
         collectionView?.backgroundColor = color

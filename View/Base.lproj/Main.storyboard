@@ -376,9 +376,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-Jy-5aM">
-                                <rect key="frame" x="0.0" y="88" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="470"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="735-YF-DnM">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="735-YF-DnM">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -391,7 +391,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="raX-S4-Dlo">
-                                <rect key="frame" x="0.0" y="647" width="375" height="82"/>
+                                <rect key="frame" x="0.0" y="566" width="375" height="82"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9yJ-fu-mvR" userLabel="ButtonsStack">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
@@ -513,13 +513,13 @@
                         <viewLayoutGuide key="safeArea" id="vx4-xa-FOa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="trailing" secondItem="vx4-xa-FOa" secondAttribute="trailing" id="5Id-g3-mRr"/>
-                            <constraint firstAttribute="trailing" secondItem="raX-S4-Dlo" secondAttribute="trailing" id="FjL-PW-ppu"/>
-                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="leading" secondItem="vx4-xa-FOa" secondAttribute="leading" id="GPN-Wd-HdU"/>
-                            <constraint firstItem="raX-S4-Dlo" firstAttribute="leading" secondItem="i4q-mZ-Xgl" secondAttribute="leading" id="Tnf-H9-d4d"/>
-                            <constraint firstItem="raX-S4-Dlo" firstAttribute="top" secondItem="vFB-Jy-5aM" secondAttribute="bottom" id="fvQ-Zs-hqN"/>
-                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="top" secondItem="vx4-xa-FOa" secondAttribute="top" id="snR-6I-QZF"/>
-                            <constraint firstItem="vx4-xa-FOa" firstAttribute="bottom" secondItem="raX-S4-Dlo" secondAttribute="bottom" id="vBr-6O-lpy"/>
+                            <constraint firstItem="vx4-xa-FOa" firstAttribute="bottom" secondItem="raX-S4-Dlo" secondAttribute="bottom" constant="81" id="Kyf-ue-LEw"/>
+                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="leading" secondItem="vx4-xa-FOa" secondAttribute="leading" id="TTE-P8-SfG"/>
+                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="trailing" secondItem="vx4-xa-FOa" secondAttribute="trailing" id="U3E-aW-iGf"/>
+                            <constraint firstItem="raX-S4-Dlo" firstAttribute="leading" secondItem="vx4-xa-FOa" secondAttribute="leading" id="ZZf-7w-aWA"/>
+                            <constraint firstItem="vFB-Jy-5aM" firstAttribute="top" secondItem="vx4-xa-FOa" secondAttribute="top" id="fJZ-03-OhB"/>
+                            <constraint firstItem="vx4-xa-FOa" firstAttribute="trailing" secondItem="raX-S4-Dlo" secondAttribute="trailing" id="lbI-7w-OOI"/>
+                            <constraint firstItem="raX-S4-Dlo" firstAttribute="firstBaseline" secondItem="vFB-Jy-5aM" secondAttribute="baseline" constant="28.333333333333336" symbolType="layoutAnchor" id="zH4-cm-VQY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aCR-hT-Rp0"/>
