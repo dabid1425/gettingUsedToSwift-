@@ -31,11 +31,6 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     }
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
-    let columnLayout = ColumnFlowLayout(
-        cellsPerRow: 9,
-        minimumInteritemSpacing: 2,
-        minimumLineSpacing: 2
-    )
     
     @IBAction func buttonClicked(_ sender: UIButton) {
         indexCount = -1
@@ -72,7 +67,6 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         super.viewDidLoad()
         sudokuBoard.delegate = self
         sudokuBoard.dataSource = self
-        sudokuBoard.collectionViewLayout = columnLayout
         sudokuBoard.contentInsetAdjustmentBehavior = .always
         sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
         
@@ -203,11 +197,11 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 for i in elment.possibleValues {
                     possibleValuesLabel.append("\(i) ")
                 }
-                cell.setLabel(sudokuLabel: "", hints: possibleValuesLabel)
+                cell.setLabel(sudokuLabel: possibleValuesLabel)
             }else {
-                cell.setLabel(sudokuLabel: "\(String(elment.boxValue))", hints: "")
-                cell.setLabelColor(color: (elment.isHidden || elment.isSolved) ? .blue : .black )
+                cell.setLabel(sudokuLabel: "\(String(elment.boxValue))")
             }
+            cell.setLabelColor(color: (elment.isHidden || elment.isSolved) ? .blue : .black )
             cell.setViewLabel(color: elment.isSelected ?  .yellow :.white)
             return cell
         }
@@ -225,8 +219,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
         self.sudokuBoard.reloadData()
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-//                        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: sudokuBoard.frame.size.height/10, height: sudokuBoard.frame.size.height/10)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           return CGSize(width: 40, height: 40)
+       }
 }
