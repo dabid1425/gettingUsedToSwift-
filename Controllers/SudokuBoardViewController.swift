@@ -40,7 +40,14 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         changeColorSelectionOrder = false
         switch sender.tag{
         case 1,2,3,4,5,6,7,8,9 :
-            sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)
+            if (!sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)) {
+                // if the pencil was selected and it couldn't add the number find the row and column value that contains the number the user selected and highlight it quick, if the pencil wasnt selected and the cause it wasnt added set the label somehow indicated wrong number
+                if (pencilSelected){
+                    
+                } else {
+                    
+                }
+            }
             self.sudokuBoard.reloadData()
         case 10 :
             print("10 clicked")
@@ -225,10 +232,15 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         indexCount = -1
         changeColorSelectionOrder = false
         sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
+        // find all rows and columns that contains that number either from a possible value or the boxValue 
+        if (sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].isSolved
+            || !sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].isHidden){
+            
+        }
         self.sudokuBoard.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: screenWidth, height: screenWidth);
-
+        
     }
 }

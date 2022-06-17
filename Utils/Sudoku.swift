@@ -71,7 +71,7 @@ class Sudoku{
         }
     }
     
-    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm){
+    func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm) -> Bool{
         if (pencilSelected) {
             if (mat[row][column].possibleValues.contains(String(numberSelected))){
                 do {
@@ -81,8 +81,8 @@ class Sudoku{
                     }
                 } catch {
                 }
-                
-            } else {
+                return true
+            } else if (checkIfSafe(i: row, j: column, num: numberSelected)) {
                 do {
                     try realm.write{
                         //realm.delete(item)
@@ -95,13 +95,15 @@ class Sudoku{
                         }
                         self.mat[row][column].isHidden = true
                     }
+                   
                 } catch {
                 }
                 
+                return true
             }
         } else {
             if (mat[row][column].isHidden){
-                if (mat[row][column].boxValue == numberSelected){
+                if (checkIfRightValue(i: row, j: column, num: numberSelected)){
                     do {
                         try realm.write{
                             //realm.delete(item)
@@ -109,9 +111,11 @@ class Sudoku{
                         }
                     } catch {
                     }
+                    return true
                 }
             }
         }
+        return false
     }
     func fillDiagonal(){
         var index:Int = 0
@@ -162,6 +166,10 @@ class Sudoku{
     } // end
     func checkIfSafe(i: Int, j: Int, num: Int) -> Bool{
         return (unUsedInRow(i: i, number: num) && unUsedInColumn(j: j, number: num) && unUsedInBox(row: i - i%squareRootValue, column: j - j%squareRootValue, num: num))
+    }
+    
+    func checkIfRightValue(i: Int, j: Int, num: Int) -> Bool{
+        return mat[i][j].boxValue == num
     }
     
     func unUsedInRow(i: Int, number: Int) -> Bool{
