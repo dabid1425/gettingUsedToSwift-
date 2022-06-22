@@ -376,7 +376,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-Jy-5aM">
-                                <rect key="frame" x="0.0" y="88" width="375" height="470"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="419"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="735-YF-DnM">
                                     <size key="itemSize" width="128" height="128"/>
@@ -391,7 +391,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="raX-S4-Dlo">
-                                <rect key="frame" x="0.0" y="566" width="375" height="82"/>
+                                <rect key="frame" x="0.0" y="515" width="375" height="133"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="9yJ-fu-mvR" userLabel="ButtonsStack">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
@@ -430,8 +430,16 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-cg-K7v" userLabel="NumberStack">
+                                    <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ceq-j8-VVZ" userLabel="Generate Candidates">
                                         <rect key="frame" x="0.0" y="51" width="375" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Candidates"/>
+                                        <connections>
+                                            <action selector="buttonClicked:" destination="Nrs-N1-Lwv" eventType="touchUpInside" id="UhX-vt-ROZ"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-cg-K7v" userLabel="NumberStack">
+                                        <rect key="frame" x="0.0" y="102" width="375" height="31"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-h1-6C0">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="31"/>

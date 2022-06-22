@@ -58,6 +58,9 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             pencilButton.isSelected = pencilSelected
         case 13 :
             print("13 clicked")
+        case 14:
+            sudoku.generateCandidates(realm: realm);
+            self.sudokuBoard.reloadData()
         default:
             print("unable to determine click")
         }

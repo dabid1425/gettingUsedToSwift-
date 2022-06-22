@@ -11,7 +11,7 @@ class Sudoku{
     var mat:[[SudokuBox]] = []
     let numberOfRowsColumns: Int = 9// Number of rows and columns
     var numberOfMissingDigits: Int = 0 //Number of digits missing
-    var squareRootValue: Int = 0
+    var squareRootValue: Int = 3
     var isEmpty = true
     
     init(previousBoard: Results<SudokuRow> , realm: Realm){
@@ -95,7 +95,7 @@ class Sudoku{
                         }
                         self.mat[row][column].isHidden = true
                     }
-                   
+                    
                 } catch {
                 }
                 
@@ -117,6 +117,33 @@ class Sudoku{
         }
         return false
     }
+    
+    func generateCandidates(realm: Realm){
+        for i in 0..<mat.count{
+            for j in 0..<mat[i].count{
+                if (mat[i][j].isHidden && !mat[i][j].isSolved){
+                    var needToReplace:Bool = false
+                    var replacementString:String = ""
+                    for k in 1..<10{
+                        if (canBeCanidate(i: i, j: j, num: k)){
+                            replacementString.append("\(String(k)) ")
+                            needToReplace = true
+                        }
+                    }
+                    if (needToReplace){
+                        do{
+                            try realm.write{
+                                mat[i][j].possibleValues = replacementString
+                            }
+                        }catch{
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func fillDiagonal(){
         var index:Int = 0
         while index < numberOfRowsColumns{
@@ -170,6 +197,47 @@ class Sudoku{
     
     func checkIfRightValue(i: Int, j: Int, num: Int) -> Bool{
         return mat[i][j].boxValue == num
+    }
+    func canBeCanidate(i: Int, j: Int, num: Int) -> Bool{
+        return (canBeCanidateInRow(i: i, number: num) && canBeCanidateInColumn(j: j, number: num) && canBeCanidateInBox(row: i - i%squareRootValue, column: j - j%squareRootValue, num: num))
+    }
+    
+    func canBeCanidateInRow(i: Int, number: Int) -> Bool{
+        var columnIndex:Int = 0
+        while (columnIndex < numberOfRowsColumns){
+            if(mat[i][columnIndex].boxValue == number && !mat[i][columnIndex].isHidden || mat[i][columnIndex].isSolved){
+                return false
+            }
+            columnIndex+=1
+        }
+        return true
+    }
+    
+    func canBeCanidateInColumn(j: Int, number: Int) -> Bool{
+        var rowIndex:Int = 0
+        while (rowIndex < numberOfRowsColumns){
+            if(mat[rowIndex][j].boxValue == number && !mat[rowIndex][j].isHidden || mat[rowIndex][j].isSolved){
+                return false
+            }
+            rowIndex+=1
+        }
+        return true
+    }
+    
+    func canBeCanidateInBox(row: Int, column: Int, num: Int) -> Bool{
+        var rowIndex:Int = 0
+        while (rowIndex < squareRootValue) {
+            var columnIndex:Int = 0
+            while (columnIndex < squareRootValue) {
+                if (mat[row + rowIndex][column + columnIndex].boxValue == num
+                    && !mat[row + rowIndex][column + columnIndex].isHidden || mat[row + rowIndex][column + columnIndex].isSolved) {
+                    return false
+                }
+                columnIndex+=1
+            }
+            rowIndex+=1
+        }
+        return true
     }
     
     func unUsedInRow(i: Int, number: Int) -> Bool{
