@@ -60,7 +60,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         case 13 :
             print("13 clicked")
         case 14:
-            sudoku.generateCandidates(realm: realm);
+            sudoku.generateCandidates(realm: realm)
             self.sudokuBoard.reloadData()
         default:
             print("unable to determine click")
@@ -221,7 +221,18 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             if (!possibleValuesLabel.isEmpty){
                 cell.setLabelColor(color:.gray)
             }
-            cell.setViewLabel(color: elment.isSelected ?  .yellow :.white)
+            var highlightedValueFound:Bool = false
+            for highlightedValue in highlightedLocations{
+                if (highlightedValue.row == indexPath.row && highlightedValue.column == indexPath.section){
+                    highlightedValueFound = true
+                    break
+                }
+            }
+            if (!highlightedValueFound){
+                cell.setViewLabel(color: elment.isSelected ?  .yellow :.white)
+            } else {
+                cell.setViewLabel(color: .cyan)
+            }
             return cell
         }
         let cell = sudokuBoard.dequeueReusableCell(withReuseIdentifier: "SudokuCell", for: indexPath)
@@ -235,9 +246,8 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuColumnSelected = indexPath.section
         indexCount = -1
         changeColorSelectionOrder = false
-        sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
         // find all rows and columns that contains that number either from a possible value or the boxValue
-        if (sudoku.canHighlight(selectedRow: sudokuRowSelected, selectedColumn:sudokuColumnSelected)) {
+        if (sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm) && sudoku.canHighlight(selectedRow: sudokuRowSelected, selectedColumn:sudokuColumnSelected)) {
             highlightedLocations = sudoku.highlightAllBoxesWithSameNumber(numberInBox: sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].boxValue)
         } else {
             highlightedLocations = []

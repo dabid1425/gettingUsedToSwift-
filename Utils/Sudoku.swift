@@ -54,13 +54,15 @@ class Sudoku{
         removeKDigits()
     }
     
-    func checkSelectedState(row: Int, column: Int,realm: Realm){
+    func checkSelectedState(row: Int, column: Int,realm: Realm) -> Bool{
+        var selectedState:Bool = false
         do {
             try realm.write{
                 for i in 0..<numberOfRowsColumns{
                     for j in 0..<numberOfRowsColumns{
                         if (i == row && j == column){
                             mat[i][j].isSelected = !mat[i][j].isSelected
+                            selectedState = mat[i][j].isSelected
                         } else {
                             mat[i][j].isSelected = false
                         }
@@ -69,6 +71,7 @@ class Sudoku{
             }
         } catch {
         }
+        return selectedState
     }
     
     func addNumberToBoard(pencilSelected: Bool, numberSelected: Int, row: Int, column: Int,realm: Realm) -> Bool{
@@ -205,7 +208,8 @@ class Sudoku{
     func canBeCanidateInRow(i: Int, number: Int) -> Bool{
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
-            if(mat[i][columnIndex].boxValue == number && !mat[i][columnIndex].isHidden || mat[i][columnIndex].isSolved){
+            print(mat[i][columnIndex])
+            if(mat[i][columnIndex].boxValue == number && (!mat[i][columnIndex].isHidden || mat[i][columnIndex].isSolved)){
                 return false
             }
             columnIndex+=1
@@ -214,22 +218,17 @@ class Sudoku{
     }
     
     func canHighlight(selectedRow:Int , selectedColumn:Int) -> Bool{
-        
-        return false
+        return !mat[selectedRow][selectedColumn].isHidden || mat[selectedRow][selectedColumn].isSolved
     }
     
     func highlightAllBoxesWithSameNumber(numberInBox:Int) ->[Highlight]{
         var highlightedValues:[Highlight] = []
-        for i in 0..<mat.count {
-            for j in 0..<mat[i].count {
-                if (!mat[i][j].isHidden || mat[i][j].isSolved) {
-                    let highlightedObj = Highlight(row: i, column: j, substringLocation: 0, isPossible: false)
+        for i in 0..<numberOfRowsColumns{
+            for j in 0..<numberOfRowsColumns{
+                var highlightedObj: Highlight = Highlight()
+                if (((!mat[i][j].isHidden || mat[i][j].isSolved) && mat[i][j].boxValue == numberInBox) || mat[i][j].possibleValues.contains(String(numberInBox))) {
+                    highlightedObj = Highlight(row: i, column: j)
                     highlightedValues.append(highlightedObj)
-                } else if (mat[i][j].possibleValues.contains(String(numberInBox))) {
-                    if let indexOfNumber = mat[i][j].possibleValues.firstIndex(of: Character(String(numberInBox)))?.encodedOffset {
-                        let highlightedObj = Highlight(row: i, column: j, substringLocation: indexOfNumber, isPossible: true)
-                        highlightedValues.append(highlightedObj)
-                    }
                 }
             }
         }
@@ -239,7 +238,8 @@ class Sudoku{
     func canBeCanidateInColumn(j: Int, number: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
-            if(mat[rowIndex][j].boxValue == number && !mat[rowIndex][j].isHidden || mat[rowIndex][j].isSolved){
+            print(mat[rowIndex][j])
+            if(mat[rowIndex][j].boxValue == number && (!mat[rowIndex][j].isHidden || mat[rowIndex][j].isSolved)){
                 return false
             }
             rowIndex+=1
@@ -253,7 +253,7 @@ class Sudoku{
             var columnIndex:Int = 0
             while (columnIndex < squareRootValue) {
                 if (mat[row + rowIndex][column + columnIndex].boxValue == num
-                    && !mat[row + rowIndex][column + columnIndex].isHidden || mat[row + rowIndex][column + columnIndex].isSolved) {
+                    && (!mat[row + rowIndex][column + columnIndex].isHidden || mat[row + rowIndex][column + columnIndex].isSolved)) {
                     return false
                 }
                 columnIndex+=1

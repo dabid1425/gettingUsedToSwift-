@@ -11,6 +11,4 @@ struct Highlight {
     
     var row:Int = 0
     var column:Int = 0
-    var substringLocation:Int = 0
-    var isPossible:Bool = false
 }
