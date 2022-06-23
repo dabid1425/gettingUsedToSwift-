@@ -124,25 +124,22 @@ class Sudoku{
     func generateCandidates(realm: Realm){
         for i in 0..<mat.count{
             for j in 0..<mat[i].count{
+                var replacementString:String = ""
                 if (mat[i][j].isHidden && !mat[i][j].isSolved){
-                    var needToReplace:Bool = false
-                    var replacementString:String = ""
                     for k in 1..<10{
                         if (canBeCanidate(i: i, j: j, num: k)){
                             replacementString.append("\(String(k)) ")
-                            needToReplace = true
-                        }
-                    }
-                    if (needToReplace){
-                        do{
-                            try realm.write{
-                                mat[i][j].possibleValues = replacementString
-                            }
-                        }catch{
-                            
                         }
                     }
                 }
+                do{
+                    try realm.write{
+                        mat[i][j].possibleValues = replacementString
+                    }
+                }catch{
+                    
+                }
+                
             }
         }
     }
@@ -208,7 +205,6 @@ class Sudoku{
     func canBeCanidateInRow(i: Int, number: Int) -> Bool{
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
-            print(mat[i][columnIndex])
             if(mat[i][columnIndex].boxValue == number && (!mat[i][columnIndex].isHidden || mat[i][columnIndex].isSolved)){
                 return false
             }
@@ -238,7 +234,6 @@ class Sudoku{
     func canBeCanidateInColumn(j: Int, number: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
-            print(mat[rowIndex][j])
             if(mat[rowIndex][j].boxValue == number && (!mat[rowIndex][j].isHidden || mat[rowIndex][j].isSolved)){
                 return false
             }

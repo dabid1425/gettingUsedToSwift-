@@ -49,6 +49,8 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                     
                 }
             }
+            sudoku.generateCandidates(realm: realm)
+            sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
             self.sudokuBoard.reloadData()
         case 10 :
             print("10 clicked")
