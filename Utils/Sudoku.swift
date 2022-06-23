@@ -85,7 +85,7 @@ class Sudoku{
                 } catch {
                 }
                 return true
-            } else if (checkIfSafe(i: row, j: column, num: numberSelected)) {
+            } else if (canBeCanidate(i: row, j: column, num: numberSelected)) {
                 do {
                     try realm.write{
                         //realm.delete(item)

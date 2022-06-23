@@ -16,6 +16,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     var pencilSelected:Bool = false
     var currentColorBeingUsedIndex: Int = 0
     let realm = try! Realm()
+    var canidates:Bool = false
     var indexCount:Int = -1
     let colorsForEachSection:[CGColor] = [ UIColor.red.cgColor,UIColor.black.cgColor,UIColor.blue.cgColor]
     var sudoku: Sudoku!;
@@ -49,8 +50,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                     
                 }
             }
-            sudoku.generateCandidates(realm: realm)
-            sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
+            if(!pencilSelected){
+                if (canidates){
+                    sudoku.generateCandidates(realm: realm)
+                }
+                sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
+            }
             self.sudokuBoard.reloadData()
         case 10 :
             print("10 clicked")
@@ -62,6 +67,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         case 13 :
             print("13 clicked")
         case 14:
+            canidates = true
             sudoku.generateCandidates(realm: realm)
             self.sudokuBoard.reloadData()
         default:
