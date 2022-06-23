@@ -27,6 +27,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     let alphaHalf: CGFloat = 0.5
     let alphaFull: CGFloat = 1.0
     var sudokuGame: Results<SudokuRow>?
+    var highlightedLocations:[Highlight] = []
     var selectedCategory : SudokuRow? {
         didSet{
             loadItems()
@@ -235,10 +236,11 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         indexCount = -1
         changeColorSelectionOrder = false
         sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
-        // find all rows and columns that contains that number either from a possible value or the boxValue 
-        if (sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].isSolved
-            || !sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].isHidden){
-            
+        // find all rows and columns that contains that number either from a possible value or the boxValue
+        if (sudoku.canHighlight(selectedRow: sudokuRowSelected, selectedColumn:sudokuColumnSelected)) {
+            highlightedLocations = sudoku.highlightAllBoxesWithSameNumber(numberInBox: sudoku.getMatBoard()[sudokuRowSelected][sudokuColumnSelected].boxValue)
+        } else {
+            highlightedLocations = []
         }
         self.sudokuBoard.reloadData()
     }

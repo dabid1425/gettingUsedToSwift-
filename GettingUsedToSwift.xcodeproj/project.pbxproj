@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3318066F286364C500B74ED4 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3318066E286364C500B74ED4 /* Highlight.swift */; };
 		339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */; };
 		33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */; };
 		33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26426283BF3EA004E4E97 /* Sudoku.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3318066E286364C500B74ED4 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SudokuBoardElementViewCell.xib; sourceTree = "<group>"; };
 		33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SudokuMainScreenViewController.swift; path = Controllers/SudokuMainScreenViewController.swift; sourceTree = SOURCE_ROOT; };
 		33D26426283BF3EA004E4E97 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				F711ADC6264B0A2900D47408 /* Calculator.swift */,
 				33D26426283BF3EA004E4E97 /* Sudoku.swift */,
+				3318066E286364C500B74ED4 /* Highlight.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */,
 				F72B2E9728413E7D00424A1A /* ColumnFlowLayout.swift in Sources */,
 				F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */,
+				3318066F286364C500B74ED4 /* Highlight.swift in Sources */,
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,
 				F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */,

@@ -213,6 +213,29 @@ class Sudoku{
         return true
     }
     
+    func canHighlight(selectedRow:Int , selectedColumn:Int) -> Bool{
+        
+        return false
+    }
+    
+    func highlightAllBoxesWithSameNumber(numberInBox:Int) ->[Highlight]{
+        var highlightedValues:[Highlight] = []
+        for i in 0..<mat.count {
+            for j in 0..<mat[i].count {
+                if (!mat[i][j].isHidden || mat[i][j].isSolved) {
+                    let highlightedObj = Highlight(row: i, column: j, substringLocation: 0, isPossible: false)
+                    highlightedValues.append(highlightedObj)
+                } else if (mat[i][j].possibleValues.contains(String(numberInBox))) {
+                    if let indexOfNumber = mat[i][j].possibleValues.firstIndex(of: Character(String(numberInBox)))?.encodedOffset {
+                        let highlightedObj = Highlight(row: i, column: j, substringLocation: indexOfNumber, isPossible: true)
+                        highlightedValues.append(highlightedObj)
+                    }
+                }
+            }
+        }
+        return highlightedValues
+    }
+    
     func canBeCanidateInColumn(j: Int, number: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
