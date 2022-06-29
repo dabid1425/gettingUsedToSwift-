@@ -44,20 +44,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         case 1,2,3,4,5,6,7,8,9 :
             if (sudokuRowSelected != -1 && sudokuColumnSelected != -1){
                 if (!sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)) {
-                    if (pencilSelected){
-                        if let cell = self.sudokuBoard!.cellForItem(at: sudoku.findConflict(numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected)) as? SudokuBoardElementViewCell {
-                            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+                    DispatchQueue.main.async {
+                        if let cell = self.sudokuBoard!.cellForItem(at: self.sudoku.findConflict(numberSelected: sender.tag, row: self.sudokuRowSelected, column: self.sudokuColumnSelected)) as? SudokuBoardElementViewCell {
+                            UIView.animate(withDuration: 2, delay: 0.0, options: .curveEaseInOut, animations: {
                                 cell.sudokuLabel.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
                             }, completion: { (done) in
                                 cell.sudokuLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)})
-                        }
-                    } else {
-                        if let cell = self.sudokuBoard!.cellForItem(at: sudoku.findConflict(numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected)) as? SudokuBoardElementViewCell {
-                            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
-                                cell.sudokuLabel.text = String(sender.tag)
-                                cell.sudokuLabel.textColor = .red
-                            }, completion: { (done) in
-                                self.sudokuBoard.reloadData()})
                         }
                     }
                 }
@@ -145,10 +137,20 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         
     }
     func loadItems(){
-        
+        canidates = true
         if let sudokuGame = realm.objects(SudokuRow.self) as Results<SudokuRow>? {
             sudoku = Sudoku(previousBoard: sudokuGame, realm: realm)
-            
+            outerLoop: for i in 0..<sudoku.getMatBoard().count{
+                for j in 0..<sudoku.getMatBoard()[i].count{
+                    print("\(sudoku.getMatBoard()[i][j])")
+                    if (sudoku.getMatBoard()[i][j].possibleValues.isEmpty && sudoku.getMatBoard()[i][j].isHidden && !sudoku.getMatBoard()[i][j].isSolved){
+                        canidates = false
+                        print("break")
+                        break outerLoop
+                    }
+                }
+            }
+        
             if (sudoku.isEmpty){
                 let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
                 let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in

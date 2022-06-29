@@ -13,6 +13,8 @@ class Sudoku{
     var numberOfMissingDigits: Int = 0 //Number of digits missing
     var squareRootValue: Int = 3
     var isEmpty = true
+    var rowConflict:Int = -1
+    var columnConflict:Int = -1
     
     init(previousBoard: Results<SudokuRow> , realm: Realm){
         var rowIndex: Int = 0
@@ -145,13 +147,10 @@ class Sudoku{
     }
     
     func findConflict(numberSelected: Int, row: Int, column: Int) -> IndexPath{
-        
-//        if () {
-//
-//        } else if () {
-//
-//        }
-        return IndexPath(row: 0, section: 0)
+        findingConflictInRow(i: row, number: numberSelected)
+        findingConflictInColumn(j: column, number: numberSelected)
+        findingConflictInBox(row: row - row%squareRootValue, column: column - column%squareRootValue, num: numberSelected)
+        return IndexPath(row: rowConflict, section: columnConflict)
     }
     
     func fillDiagonal(){
@@ -159,6 +158,48 @@ class Sudoku{
         while index < numberOfRowsColumns{
             fillBox(row: index, column: index)
             index = index + squareRootValue
+        }
+    }
+    
+    func findingConflictInRow(i: Int, number: Int){
+        var columnIndex:Int = 0
+        while (columnIndex < numberOfRowsColumns){
+            if(mat[i][columnIndex].boxValue == number && (mat[i][columnIndex].isSolved || !mat[i][columnIndex].isHidden)){
+                rowConflict = i
+                columnConflict = columnIndex
+                break
+            }
+            columnIndex+=1
+        }
+    }
+    
+    func findingConflictInColumn(j: Int, number: Int){
+        var rowIndex:Int = 0
+        while (rowIndex < numberOfRowsColumns){
+            if(mat[rowIndex][j].boxValue == number && (mat[rowIndex][j].isSolved
+                                                       || !mat[rowIndex][j].isHidden)){
+                rowConflict = rowIndex
+                columnConflict = j
+                break
+            }
+            rowIndex+=1
+        }
+    }
+    
+    func findingConflictInBox(row: Int, column: Int, num: Int){
+        var rowIndex:Int = 0
+        while (rowIndex < squareRootValue) {
+            var columnIndex:Int = 0
+            while (columnIndex < squareRootValue) {
+                if (mat[row + rowIndex][column + columnIndex].boxValue == num && (mat[row + rowIndex][column + columnIndex].isSolved
+                                                                                  || !mat[row + rowIndex][column + columnIndex].isHidden)) {
+                    rowConflict = row + rowIndex
+                    columnConflict = column + columnIndex
+                   break
+                }
+                columnIndex+=1
+            }
+            rowIndex+=1
         }
     }
     
@@ -272,6 +313,8 @@ class Sudoku{
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
             if(mat[i][columnIndex].boxValue == number){
+                rowConflict = i
+                columnConflict = columnIndex
                 return false
             }
             columnIndex+=1
@@ -283,6 +326,8 @@ class Sudoku{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
             if(mat[rowIndex][j].boxValue == number){
+                rowConflict = rowIndex
+                columnConflict = j
                 return false
             }
             rowIndex+=1
