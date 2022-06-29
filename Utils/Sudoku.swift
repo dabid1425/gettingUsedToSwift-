@@ -144,6 +144,16 @@ class Sudoku{
         }
     }
     
+    func findConflict(numberSelected: Int, row: Int, column: Int) -> IndexPath{
+        
+//        if () {
+//
+//        } else if () {
+//
+//        }
+        return IndexPath(row: 0, section: 0)
+    }
+    
     func fillDiagonal(){
         var index:Int = 0
         while index < numberOfRowsColumns{
