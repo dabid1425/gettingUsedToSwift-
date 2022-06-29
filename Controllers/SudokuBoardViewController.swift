@@ -142,10 +142,8 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             sudoku = Sudoku(previousBoard: sudokuGame, realm: realm)
             outerLoop: for i in 0..<sudoku.getMatBoard().count{
                 for j in 0..<sudoku.getMatBoard()[i].count{
-                    print("\(sudoku.getMatBoard()[i][j])")
                     if (sudoku.getMatBoard()[i][j].possibleValues.isEmpty && sudoku.getMatBoard()[i][j].isHidden && !sudoku.getMatBoard()[i][j].isSolved){
                         canidates = false
-                        print("break")
                         break outerLoop
                     }
                 }
