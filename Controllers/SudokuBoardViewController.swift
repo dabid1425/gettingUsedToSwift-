@@ -58,6 +58,9 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                         sudoku.generateCandidates(realm: realm)
                     }
                     sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
+                    if (sudoku.checkIfSolved()){
+                        newGameDialog()
+                    }
                 }
                 self.sudokuBoard.reloadData()
             }
@@ -99,6 +102,20 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         sudokuBoard.contentInsetAdjustmentBehavior = .always
         sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
     }
+    
+    func newGameDialog(){
+        let alert = UIAlertController(title: "Game Completed ", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in
+            self.newGameFunc()
+        }
+        let cancel = UIAlertAction(title: "Go back", style: .default) { [self] (action) in
+            navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func createNewGame(K: Int){
         do {
             try realm.write{
@@ -140,16 +157,17 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         canidates = true
         if let sudokuGame = realm.objects(SudokuRow.self) as Results<SudokuRow>? {
             sudoku = Sudoku(previousBoard: sudokuGame, realm: realm)
-            outerLoop: for i in 0..<sudoku.getMatBoard().count{
-                for j in 0..<sudoku.getMatBoard()[i].count{
-                    if (sudoku.getMatBoard()[i][j].possibleValues.isEmpty && sudoku.getMatBoard()[i][j].isHidden && !sudoku.getMatBoard()[i][j].isSolved){
+        outerLoop: for i in 0..<sudoku.getMatBoard().count{
+            for j in 0..<sudoku.getMatBoard()[i].count{
+                if (sudoku.getMatBoard()[i][j].possibleValues.isEmpty && sudoku.getMatBoard()[i][j].isHidden &&     !sudoku.getMatBoard()[i][j].isSolved){
                         canidates = false
                         break outerLoop
                     }
                 }
             }
-        
-            if (sudoku.isEmpty){
+            if (sudoku.checkIfSolved()){
+               newGameDialog()
+            }else if (sudoku.isEmpty){
                 let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
                 let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in
                     self.newGameFunc()

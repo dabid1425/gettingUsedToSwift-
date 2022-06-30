@@ -215,7 +215,7 @@
                         <segue destination="9uW-IR-rAT" kind="relationship" relationship="viewControllers" id="A2q-GC-7xe"/>
                         <segue destination="BsQ-1k-DkX" kind="relationship" relationship="viewControllers" id="0t3-08-JVF"/>
                         <segue destination="wkP-b3-gN5" kind="relationship" relationship="viewControllers" id="x6I-OT-gkM"/>
-                        <segue destination="Bxa-Ip-OnW" kind="relationship" relationship="viewControllers" id="Fg2-KJ-ihC"/>
+                        <segue destination="Bxa-Ip-OnW" kind="relationship" relationship="viewControllers" id="BKo-zj-Z7O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Pu-ix-6ia" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -540,11 +540,12 @@
             </objects>
             <point key="canvasLocation" x="4250.3999999999996" y="-683.49753694581284"/>
         </scene>
-        <!--Item-->
+        <!--Sudoku-->
         <scene sceneID="fD9-Ci-nof">
             <objects>
                 <navigationController id="Bxa-Ip-OnW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tJ7-ne-Iby"/>
+                    <tabBarItem key="tabBarItem" title="Sudoku" id="tJ7-ne-Iby"/>
+                    <navigationItem key="navigationItem" id="Gdn-4C-gL4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZ9-J6-Z2U">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

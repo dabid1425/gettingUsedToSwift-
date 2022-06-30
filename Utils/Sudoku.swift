@@ -161,6 +161,17 @@ class Sudoku{
         }
     }
     
+    func checkIfSolved () -> Bool {
+        for i in 0..<mat.count{
+            for j in 0..<mat[i].count{
+                if (mat[i][j].isHidden && !mat[i][j].isSolved){
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
     func findingConflictInRow(i: Int, number: Int){
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
