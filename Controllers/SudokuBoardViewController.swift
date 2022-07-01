@@ -140,11 +140,13 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         let extreme = UIAlertAction(title: "Extreme", style: .default) { [self] (action) in
             createNewGame(K: 60)
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(easy)
         alert.addAction(medium)
         alert.addAction(hard)
         alert.addAction(extremlyHard)
         alert.addAction(extreme)
+        alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
         
     }
