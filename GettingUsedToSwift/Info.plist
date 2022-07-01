@@ -20,10 +20,14 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>QrCodeReader needs to access your camera to read qr code</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need location to get weather</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Saving QR code to file</string>
 	<key>UIApplicationSceneManifest</key>
