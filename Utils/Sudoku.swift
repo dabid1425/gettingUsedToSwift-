@@ -397,7 +397,7 @@ class Sudoku{
         while (count != 0){
             let cellId = randomGenerator((numberOfRowsColumns * numberOfRowsColumns)) - 1
             let i = Int(cellId / numberOfRowsColumns)
-            var j = cellId % 9
+            var j = cellId % 10
             if (j != 0){
                 j = j - 1
                 if (!mat[i][j].isHidden){

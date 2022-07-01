@@ -65,15 +65,11 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 self.sudokuBoard.reloadData()
             }
         case 10 :
-            print("10 clicked")
-        case 11 :
-            print("11 clicked")
-        case 12 :
             pencilSelected = !pencilSelected
             pencilButton.isSelected = pencilSelected
-        case 13 :
-            print("13 clicked")
-        case 14:
+        case 11 :
+            newGameFunc()
+        case 12 :
             canidates = true
             sudoku.generateCandidates(realm: realm)
             self.sudokuBoard.reloadData()
@@ -87,7 +83,6 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         super.viewWillAppear(animated)
         if (newGame) {
             newGameFunc()
-            //sudoku.printBoard();
         } else {
             loadItems()
         }
