@@ -34,15 +34,9 @@ class WeatherViewController: UIViewController {
     @IBAction func changeUnits(_ sender: UIButton) {
         switch sender.tag{
         case 1,2 :
+            self.celsius = !self.celsius
             DispatchQueue.main.async{
-                self.celsius = !self.celsius
-                if (self.celsius){
-                    self.tempValue.titleLabel?.text = String(self.temp)
-                    
-                } else {
-                    self.tempValue.titleLabel?.text = String((self.temp *  (9/5)) + 32)
-                }
-                self.degreeValue.titleLabel?.text = self.celsius ? "C" : "F"
+                self.setTempValue()
             }
         default:
             print("unable to determine click")
@@ -74,18 +68,19 @@ extension WeatherViewController : UITextFieldDelegate{
         }
         searchTextField.text = ""
     }
-    
+    func setTempValue(){
+        DispatchQueue.main.async{
+            self.tempValue.titleLabel?.text = self.celsius ? String(self.temp) : String(self.temp *  (9/5) + 32)
+            self.degreeValue.titleLabel?.text = self.celsius ? "C" : "F"
+        }
+    }
 }
 //MARK: - WeatherManagerDelegate
 extension WeatherViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather:WeatherModel) {
         DispatchQueue.main.async{
             self.temp = Double(weather.temperature)!
-            if (self.celsius){
-                self.tempValue.titleLabel?.text = weather.temperature
-            } else {
-                self.tempValue.titleLabel?.text = String((Int(weather.temperature)! *  (9/5)) + 32)
-            }
+            self.setTempValue()
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
         }

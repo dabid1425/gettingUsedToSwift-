@@ -189,7 +189,7 @@
                             <constraint firstItem="j9v-p8-jy6" firstAttribute="centerY" secondItem="vpX-Cq-45t" secondAttribute="centerY" id="hWO-xu-kXm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tip Calc" id="TtB-sG-KWK"/>
+                    <tabBarItem key="tabBarItem" title="Tip Calc" image="percent" catalog="system" selectedImage="percent" id="TtB-sG-KWK"/>
                     <navigationItem key="navigationItem" id="UaV-I1-mqm"/>
                     <connections>
                         <outlet property="billAmount" destination="PLm-WK-pFC" id="Oy9-EL-Co5"/>
@@ -357,7 +357,9 @@
                             <constraint firstItem="EjZ-FX-tns" firstAttribute="trailing" secondItem="13X-Vi-KsQ" secondAttribute="trailing" id="gE7-6V-Jvo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sudoku" id="bXo-oK-KIi"/>
+                    <tabBarItem key="tabBarItem" title="Sudoku" image="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" selectedImage="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" id="bXo-oK-KIi">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="2EX-SO-S6E"/>
                     <connections>
                         <outlet property="loadGame" destination="Hm4-50-ZxF" id="88B-9J-bpV"/>
@@ -530,7 +532,9 @@
         <scene sceneID="fD9-Ci-nof">
             <objects>
                 <navigationController id="Bxa-Ip-OnW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sudoku" id="tJ7-ne-Iby"/>
+                    <tabBarItem key="tabBarItem" title="Sudoku" image="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" selectedImage="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" id="tJ7-ne-Iby">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="Gdn-4C-gL4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qZ9-J6-Z2U">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -662,7 +666,7 @@
                             <constraint firstItem="Ud2-9Q-YHq" firstAttribute="centerX" secondItem="gIV-6D-KiO" secondAttribute="centerX" id="z2z-Ra-MDa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Unit Conver." id="Djh-qe-0qv"/>
+                    <tabBarItem key="tabBarItem" title="Unit Conver." image="icon-convert-25" selectedImage="icon-convert-25" id="Djh-qe-0qv"/>
                     <navigationItem key="navigationItem" id="7YQ-xD-v9j"/>
                     <connections>
                         <outlet property="convertedUnitSymbol" destination="Xyn-9G-Gxn" id="J92-y2-8Mg"/>
@@ -676,7 +680,7 @@
             </objects>
             <point key="canvasLocation" x="1011" y="440"/>
         </scene>
-        <!--Item-->
+        <!--Weather-->
         <scene sceneID="aKE-sD-wRH">
             <objects>
                 <viewController id="dpI-MH-Wxg" customClass="WeatherViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -793,7 +797,7 @@
                             <constraint firstAttribute="bottom" secondItem="GCQ-6O-ERM" secondAttribute="bottom" id="nur-xa-pNv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="bag-cc-S4N"/>
+                    <tabBarItem key="tabBarItem" title="Weather" image="cloud.bolt" catalog="system" selectedImage="cloud.bolt" id="bag-cc-S4N"/>
                     <connections>
                         <outlet property="cityLabel" destination="Kpl-gA-jSb" id="JPd-Cu-71d"/>
                         <outlet property="conditionImageView" destination="0IX-Bk-hWv" id="mrY-wA-mhG"/>
@@ -808,11 +812,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" width="38" height="38"/>
         <image name="background" width="662" height="662"/>
         <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="cloud.bolt" catalog="system" width="122" height="128"/>
         <image name="cloud.rain" catalog="system" width="125" height="128"/>
+        <image name="icon-convert-25" width="26" height="26"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="percent" catalog="system" width="128" height="121"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <namedColor name="weatherColor">
             <color red="0.10499999672174454" green="0.26399999856948853" blue="0.28400000929832458" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

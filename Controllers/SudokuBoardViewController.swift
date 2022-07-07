@@ -42,24 +42,40 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         changeColorSelectionOrder = false
         switch sender.tag{
         case 1,2,3,4,5,6,7,8,9 :
-            if (sudokuRowSelected != -1 && sudokuColumnSelected != -1){
-                if (!sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: sudokuRowSelected, column: sudokuColumnSelected, realm:realm)) {
+            if (self.sudokuRowSelected != -1 && self.sudokuColumnSelected != -1){
+                if (!sudoku.addNumberToBoard(pencilSelected: pencilSelected, numberSelected: sender.tag, row: self.sudokuRowSelected, column: self.sudokuColumnSelected, realm:realm)) {
+                    let dummyIndex = IndexPath(row: sudokuRowSelected, section: sudokuColumnSelected)
                     DispatchQueue.main.async {
-                        if let cell = self.sudokuBoard!.cellForItem(at: self.sudoku.findConflict(numberSelected: sender.tag, row: self.sudokuRowSelected, column: self.sudokuColumnSelected)) as? SudokuBoardElementViewCell {
-                            UIView.animate(withDuration: 2, delay: 0.0, options: .curveEaseInOut, animations: {
-                                cell.sudokuLabel.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
-                            }, completion: { (done) in
-                                cell.sudokuLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)})
+                        let indexPath = self.sudoku.findConflict(numberSelected: sender.tag, row: self.sudokuRowSelected, column: self.sudokuColumnSelected)
+                        if ( indexPath.row != -1 && indexPath.row != -1){
+                            if let cell = self.sudokuBoard!.cellForItem(at: indexPath) as? SudokuBoardElementViewCell {
+                                UIView.animate(withDuration: 2, delay: 0.0, options: .curveEaseInOut, animations: {
+                                    cell.sudokuLabel.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                                }, completion: { (done) in
+                                    cell.sudokuLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)})
+                            }
+                        } else {
+                            if let cell = self.sudokuBoard!.cellForItem(at: dummyIndex) as? SudokuBoardElementViewCell {
+                                UIView.animate(withDuration: 2, delay: 0.0, options: .curveEaseInOut, animations: {
+                                    cell.collectionView.backgroundColor = .red
+                                }, completion: { (done) in
+                                    cell.collectionView.backgroundColor = .yellow})
+                            }
                         }
+                        
                     }
-                }
-                if(!pencilSelected){
-                    if (canidates){
-                        sudoku.generateCandidates(realm: realm)
-                    }
-                    sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
-                    if (sudoku.checkIfSolved()){
-                        newGameDialog()
+                    
+                } else {
+                    if(!pencilSelected){
+                        if (canidates){
+                            sudoku.generateCandidates(realm: realm)
+                        }
+                        sudoku.checkSelectedState(row: sudokuRowSelected, column: sudokuColumnSelected, realm: realm)
+                        self.sudokuColumnSelected = -1
+                        self.sudokuRowSelected = -1
+                        if (sudoku.checkIfSolved()){
+                            newGameDialog()
+                        }
                     }
                 }
                 self.sudokuBoard.reloadData()
@@ -157,13 +173,13 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         outerLoop: for i in 0..<sudoku.getMatBoard().count{
             for j in 0..<sudoku.getMatBoard()[i].count{
                 if (sudoku.getMatBoard()[i][j].possibleValues.isEmpty && sudoku.getMatBoard()[i][j].isHidden &&     !sudoku.getMatBoard()[i][j].isSolved){
-                        canidates = false
-                        break outerLoop
-                    }
+                    canidates = false
+                    break outerLoop
                 }
             }
+        }
             if (sudoku.checkIfSolved()){
-               newGameDialog()
+                newGameDialog()
             }else if (sudoku.isEmpty){
                 let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
                 let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in
@@ -277,8 +293,8 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        sudokuRowSelected = indexPath.row
-        sudokuColumnSelected = indexPath.section
+        self.sudokuRowSelected = indexPath.row
+        self.sudokuColumnSelected = indexPath.section
         indexCount = -1
         changeColorSelectionOrder = false
         // find all rows and columns that contains that number either from a possible value or the boxValue

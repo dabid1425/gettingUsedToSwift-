@@ -14,6 +14,7 @@
 		33180C61286F50CE004FCD13 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33180C5E286F50CE004FCD13 /* WeatherManager.swift */; };
 		33180C62286F50CE004FCD13 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33180C5F286F50CE004FCD13 /* WeatherData.swift */; };
 		33180C63286F50CE004FCD13 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33180C60286F50CE004FCD13 /* WeatherModel.swift */; };
+		331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331CC1B628771DC200CF1615 /* Assets.xcassets */; };
 		339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */; };
 		33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */; };
 		33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26426283BF3EA004E4E97 /* Sudoku.swift */; };
@@ -30,7 +31,6 @@
 		F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5325D713370026F2F0 /* SceneDelegate.swift */; };
 		F7881B5625D713370026F2F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5525D713370026F2F0 /* ViewController.swift */; };
 		F7881B5925D713370026F2F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5725D713370026F2F0 /* Main.storyboard */; };
-		F7881B5B25D713380026F2F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5A25D713380026F2F0 /* Assets.xcassets */; };
 		F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5C25D713380026F2F0 /* LaunchScreen.storyboard */; };
 		F796A9D528400A3E00409BAE /* SudokuBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */; };
 		F7E0D50E261355230078A15E /* TipCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E0D50D261355230078A15E /* TipCalViewController.swift */; };
@@ -44,6 +44,7 @@
 		33180C5E286F50CE004FCD13 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		33180C5F286F50CE004FCD13 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		33180C60286F50CE004FCD13 /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		331CC1B628771DC200CF1615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SudokuBoardElementViewCell.xib; sourceTree = "<group>"; };
 		33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SudokuMainScreenViewController.swift; path = Controllers/SudokuMainScreenViewController.swift; sourceTree = SOURCE_ROOT; };
 		33D26426283BF3EA004E4E97 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		F7881B5325D713370026F2F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F7881B5525D713370026F2F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F7881B5825D713370026F2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F7881B5A25D713380026F2F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = GettingUsedToSwift/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		F7881B5D25D713380026F2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7881B5F25D713380026F2F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuBoardViewController.swift; sourceTree = "<group>"; };
@@ -169,9 +169,9 @@
 			children = (
 				F7881B5125D713370026F2F0 /* AppDelegate.swift */,
 				F7881B5325D713370026F2F0 /* SceneDelegate.swift */,
-				F7881B5A25D713380026F2F0 /* Assets.xcassets */,
 				F7881B5C25D713380026F2F0 /* LaunchScreen.storyboard */,
 				F7881B5F25D713380026F2F0 /* Info.plist */,
+				331CC1B628771DC200CF1615 /* Assets.xcassets */,
 			);
 			path = GettingUsedToSwift;
 			sourceTree = "<group>";
@@ -241,8 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */,
-				F7881B5B25D713380026F2F0 /* Assets.xcassets in Resources */,
 				F7881B5925D713370026F2F0 /* Main.storyboard in Resources */,
+				331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */,
 				339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -147,10 +147,10 @@ class Sudoku{
     }
     
     func findConflict(numberSelected: Int, row: Int, column: Int) -> IndexPath{
-        findingConflictInRow(i: row, number: numberSelected)
-        findingConflictInColumn(j: column, number: numberSelected)
-        findingConflictInBox(row: row - row%squareRootValue, column: column - column%squareRootValue, num: numberSelected)
-        return IndexPath(row: rowConflict, section: columnConflict)
+        if (findingConflictInRow(i: row, number: numberSelected) || findingConflictInColumn(j: column, number: numberSelected) || findingConflictInBox(row: row - row%squareRootValue, column: column - column%squareRootValue, num: numberSelected)){
+            return IndexPath(row: rowConflict, section: columnConflict)
+        }
+        return IndexPath(row: -1, section: -1)
     }
     
     func fillDiagonal(){
@@ -172,32 +172,34 @@ class Sudoku{
         return true
     }
     
-    func findingConflictInRow(i: Int, number: Int){
+    func findingConflictInRow(i: Int, number: Int) -> Bool{
         var columnIndex:Int = 0
         while (columnIndex < numberOfRowsColumns){
             if(mat[i][columnIndex].boxValue == number && (mat[i][columnIndex].isSolved || !mat[i][columnIndex].isHidden)){
                 rowConflict = i
                 columnConflict = columnIndex
-                break
+                return true
             }
             columnIndex+=1
         }
+        return false
     }
     
-    func findingConflictInColumn(j: Int, number: Int){
+    func findingConflictInColumn(j: Int, number: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < numberOfRowsColumns){
             if(mat[rowIndex][j].boxValue == number && (mat[rowIndex][j].isSolved
                                                        || !mat[rowIndex][j].isHidden)){
                 rowConflict = rowIndex
                 columnConflict = j
-                break
+                return true
             }
             rowIndex+=1
         }
+        return false
     }
     
-    func findingConflictInBox(row: Int, column: Int, num: Int){
+    func findingConflictInBox(row: Int, column: Int, num: Int) -> Bool{
         var rowIndex:Int = 0
         while (rowIndex < squareRootValue) {
             var columnIndex:Int = 0
@@ -206,12 +208,13 @@ class Sudoku{
                                                                                   || !mat[row + rowIndex][column + columnIndex].isHidden)) {
                     rowConflict = row + rowIndex
                     columnConflict = column + columnIndex
-                   break
+                   return true
                 }
                 columnIndex+=1
             }
             rowIndex+=1
         }
+        return false
     }
     
     func unUsedInBox(row: Int, column: Int, num: Int) -> Bool{
