@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController {
+class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet var featuresView: UIView!
@@ -27,6 +27,8 @@ class DrawViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
       //  canvasView.strokeWidth = 1
       //  widthSlider.setThumbImage(#imageLiteral(resourceName: "brush"), for: .normal)
        // opacitySlider.setThumbImage(#imageLiteral(resourceName: "opacity"), for: .normal)
@@ -67,9 +69,6 @@ class DrawViewController: UIViewController {
             present(ac, animated: true)
         }
     }
-}
-
-extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorsArray.count
     }
@@ -87,7 +86,6 @@ extension DrawViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let color = colorsArray[indexPath.row]
         canvasView.strokeColor = color
     }
-    
 }
 
 extension UIView {
