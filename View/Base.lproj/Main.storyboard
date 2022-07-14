@@ -858,23 +858,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcH-6q-lsc" customClass="CanvasView" customModule="GettingUsedToSwift" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="834" height="1079"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6N2-e7-l2M">
                                 <rect key="frame" x="0.0" y="999" width="834" height="130"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="qiC-aA-G2m">
-                                        <rect key="frame" x="0.0" y="0.0" width="834" height="130"/>
-                                    </imageView>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-j9-srT">
-                                        <rect key="frame" x="0.0" y="0.0" width="834" height="130"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="82L-uN-5q8">
-                                            <rect key="frame" x="0.0" y="0.0" width="834" height="130"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                        <blurEffect style="extraLight"/>
-                                    </visualEffectView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yrr-QS-boL">
-                                        <rect key="frame" x="0.0" y="0.0" width="706" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="622" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="M7U-ik-K8l"/>
@@ -946,7 +936,7 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L8J-PJ-o3e">
                                                         <rect key="frame" x="36" y="0.0" width="792" height="31"/>
                                                         <connections>
-                                                            <action selector="onClickOpacity:" destination="up3-hm-TPK" eventType="valueChanged" id="Bcp-ru-QQo"/>
+                                                            <action selector="onClickOpacity:" destination="up3-hm-TPK" eventType="valueChanged" id="o5t-D0-TcR"/>
                                                         </connections>
                                                     </slider>
                                                 </subviews>
@@ -954,10 +944,38 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Our-JS-4L3">
-                                        <rect key="frame" x="758" y="12.5" width="76" height="20"/>
+                                        <rect key="frame" x="674" y="12.5" width="160" height="20"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4u-hc-ckY">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOg-dr-sRA" userLabel="ViewLayer">
                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="Ptr-ni-w70"/>
+                                                    <constraint firstAttribute="width" constant="20" id="fns-e0-4Z8"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square.3.layers.3d.down.right" catalog="system">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="viewLayersButton:" destination="up3-hm-TPK" eventType="touchUpInside" id="Zv6-fg-oZO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFN-ag-NaS" userLabel="addLayer">
+                                                <rect key="frame" x="28" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="5Y7-lJ-Jsn"/>
+                                                    <constraint firstAttribute="width" constant="20" id="JJ6-gW-cku"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="addLayerButton:" destination="up3-hm-TPK" eventType="touchUpInside" id="4q4-SY-VcT"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4u-hc-ckY" userLabel="save">
+                                                <rect key="frame" x="56" y="0.0" width="20" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="8TB-xj-yLw"/>
@@ -965,11 +983,11 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="download"/>
                                                 <connections>
-                                                    <action selector="onClickSave:" destination="up3-hm-TPK" eventType="touchUpInside" id="1GS-st-TTR"/>
+                                                    <action selector="onClickSave:" destination="up3-hm-TPK" eventType="touchUpInside" id="Kl0-1v-rDd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCM-3t-tV0">
-                                                <rect key="frame" x="28" y="0.0" width="20" height="20"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCM-3t-tV0" userLabel="undo">
+                                                <rect key="frame" x="84" y="0.0" width="20" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="dr4-xQ-Ht0"/>
@@ -977,19 +995,34 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="undo"/>
                                                 <connections>
-                                                    <action selector="onClickUndo:" destination="up3-hm-TPK" eventType="touchUpInside" id="amp-FM-QrX"/>
+                                                    <action selector="onClickUndo:" destination="up3-hm-TPK" eventType="touchUpInside" id="5yp-kK-JR9"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qk-5m-wS8">
-                                                <rect key="frame" x="56" y="0.0" width="20" height="20"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qk-5m-wS8" userLabel="erase">
+                                                <rect key="frame" x="112" y="0.0" width="20" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="1hf-bZ-lmg"/>
                                                     <constraint firstAttribute="width" constant="20" id="2rO-ED-zuh"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="office-material"/>
+                                                <state key="normal" image="office-material"/>
                                                 <connections>
-                                                    <action selector="onClickClear:" destination="up3-hm-TPK" eventType="touchUpInside" id="UKf-7h-l5D"/>
+                                                    <action selector="changeTip:" destination="up3-hm-TPK" eventType="touchUpInside" id="vjr-Kh-c6t"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdX-lN-Jul" userLabel="pencil">
+                                                <rect key="frame" x="140" y="0.0" width="20" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="hCK-XN-ZI2"/>
+                                                    <constraint firstAttribute="height" constant="20" id="waD-Nn-JA2"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="changeTip:" destination="up3-hm-TPK" eventType="touchUpInside" id="zCJ-Tt-zci"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -998,22 +1031,14 @@
                                 <viewLayoutGuide key="safeArea" id="ZJD-Qz-z4e"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ZJD-Qz-z4e" firstAttribute="bottom" secondItem="qiC-aA-G2m" secondAttribute="bottom" id="16a-Gx-beb"/>
                                     <constraint firstItem="Our-JS-4L3" firstAttribute="leading" secondItem="yrr-QS-boL" secondAttribute="trailing" constant="52" id="1Df-IJ-K7Z"/>
                                     <constraint firstItem="yrr-QS-boL" firstAttribute="top" secondItem="ZJD-Qz-z4e" secondAttribute="top" id="5Lt-10-JHq"/>
                                     <constraint firstItem="yrr-QS-boL" firstAttribute="leading" secondItem="ZJD-Qz-z4e" secondAttribute="leading" id="9z5-Ex-LPm"/>
-                                    <constraint firstItem="qiC-aA-G2m" firstAttribute="trailing" secondItem="ZJD-Qz-z4e" secondAttribute="trailing" id="Npa-Iu-eHP"/>
-                                    <constraint firstItem="Htg-j9-srT" firstAttribute="leading" secondItem="ZJD-Qz-z4e" secondAttribute="leading" id="OlW-Xv-PdQ"/>
                                     <constraint firstItem="U3r-C0-ZBV" firstAttribute="top" secondItem="yrr-QS-boL" secondAttribute="bottom" constant="5" id="SEf-I1-UaW"/>
-                                    <constraint firstItem="Htg-j9-srT" firstAttribute="top" secondItem="ZJD-Qz-z4e" secondAttribute="top" id="Sc1-oG-RGI"/>
-                                    <constraint firstItem="ZJD-Qz-z4e" firstAttribute="bottom" secondItem="Htg-j9-srT" secondAttribute="bottom" id="TVZ-yI-MfR"/>
-                                    <constraint firstItem="qiC-aA-G2m" firstAttribute="leading" secondItem="ZJD-Qz-z4e" secondAttribute="leading" id="WZF-wD-Gb4"/>
                                     <constraint firstItem="ZJD-Qz-z4e" firstAttribute="trailing" secondItem="Our-JS-4L3" secondAttribute="trailing" id="Ygu-fP-YyJ"/>
                                     <constraint firstItem="yrr-QS-boL" firstAttribute="top" secondItem="ZJD-Qz-z4e" secondAttribute="top" id="bIr-yo-x2N"/>
-                                    <constraint firstItem="qiC-aA-G2m" firstAttribute="top" secondItem="ZJD-Qz-z4e" secondAttribute="top" id="fIb-aV-zIn"/>
                                     <constraint firstItem="OR1-gB-8Tt" firstAttribute="top" secondItem="Our-JS-4L3" secondAttribute="bottom" constant="17.5" id="gQI-uT-ttL"/>
                                     <constraint firstAttribute="trailing" secondItem="U3r-C0-ZBV" secondAttribute="trailing" constant="8" id="pKe-QD-eOF"/>
-                                    <constraint firstItem="Htg-j9-srT" firstAttribute="trailing" secondItem="ZJD-Qz-z4e" secondAttribute="trailing" id="vM3-lD-SKY"/>
                                     <constraint firstItem="ZJD-Qz-z4e" firstAttribute="bottom" secondItem="U3r-C0-ZBV" secondAttribute="bottom" constant="10" id="xCn-nS-2Vj"/>
                                     <constraint firstItem="U3r-C0-ZBV" firstAttribute="leading" secondItem="ZJD-Qz-z4e" secondAttribute="leading" id="xWi-rT-ef4"/>
                                 </constraints>
@@ -1047,7 +1072,6 @@
     </scenes>
     <resources>
         <image name="360_F_223282851_HP22kLC9EjTtN9dwNgQrrwrF5cL5xSF5" width="38" height="38"/>
-        <image name="back" width="626" height="417"/>
         <image name="background" width="662" height="662"/>
         <image name="brush" width="64" height="64"/>
         <image name="clock" catalog="system" width="128" height="121"/>
@@ -1061,7 +1085,9 @@
         <image name="opacity" width="32" height="32"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="percent" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
+        <image name="square.3.layers.3d.down.right" catalog="system" width="122" height="128"/>
         <image name="undo" width="64" height="64"/>
         <namedColor name="weatherColor">
             <color red="0.10499999672174454" green="0.26399999856948853" blue="0.28400000929832458" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

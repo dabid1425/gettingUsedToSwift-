@@ -8,16 +8,22 @@
 
 import UIKit
 
-class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
-
+class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource{
+    
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet var featuresView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    var canvasLayers:[CanvasView] = []
+    var usingEraser: Bool = false
+    var colorSelected: UIColor = .black
     
     @IBOutlet weak var widthSlider: UISlider!
     @IBOutlet weak var opacitySlider: UISlider!
+    var pencilStrokeWidth: CGFloat = 1.0
+    var pencilStrokeOpacity: CGFloat = 1.0
     
+    var eraserStrokeWidth: CGFloat = 1.0
+    var eraserStrokeOpacity: CGFloat = 1.0
     var blurView = UIVisualEffectView()
     
     var kHeight: CGFloat = 130 // Total height of feature view
@@ -29,31 +35,72 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-      //  canvasView.strokeWidth = 1
-      //  widthSlider.setThumbImage(#imageLiteral(resourceName: "brush"), for: .normal)
-       // opacitySlider.setThumbImage(#imageLiteral(resourceName: "opacity"), for: .normal)
+        //  canvasView.strokeWidth = 1
+        //  widthSlider.setThumbImage(#imageLiteral(resourceName: "brush"), for: .normal)
+        // opacitySlider.setThumbImage(#imageLiteral(resourceName: "opacity"), for: .normal)
         opacitySlider.tintColor = .red
         featuresView.transform = CGAffineTransform(translationX: 0, y: kHeight - (kHeight - 80))
-        
+        canvasLayers.append(canvasView)
     }
-
-   
+    
+    
+    @IBAction func viewLayersButton(_ sender: UIButton) {
+        print(canvasLayers)
+    }
+    @IBAction func addLayerButton(_ sender: UIButton) {
+        let newView = CanvasView()
+        view.addSubview(newView)
+        canvasLayers.append(newView)
+        canvasView = newView
+        setCanvasValues()
+    }
+    
+    func setCanvasValues(){
+        canvasView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
+        canvasView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
+        canvasView.strokeColor = usingEraser ? .white : colorSelected
+        widthSlider.value = Float(canvasView.pencilStrokeWidth)
+        opacitySlider.value = Float(canvasView.pencilStrokeOpacity)
+    }
+    
     @IBAction func onClickBrushWidth(_ sender: UISlider) {
-        canvasView.strokeWidth = CGFloat(sender.value)
+        if (usingEraser){
+            eraserStrokeWidth = CGFloat(sender.value)
+            
+        } else {
+            pencilStrokeWidth = CGFloat(sender.value)
+        }
+        canvasView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
     }
     
     @IBAction func onClickOpacity(_ sender: UISlider) {
-    canvasView.strokeOpacity = CGFloat(sender.value)
+        if (usingEraser){
+            eraserStrokeOpacity = CGFloat(sender.value)
+            
+        } else {
+            pencilStrokeOpacity = CGFloat(sender.value)
+        }
+        canvasView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
     }
     
-    @IBAction func onClickClear(_ sender: Any) {
-        canvasView.clearCanvasView()
-    }
     @IBAction func onClickUndo(_ sender: Any) {
         canvasView.undoDraw()
     }
+    @IBAction func changeTip(_ sender: UIButton) {
+        if (sender.tag == 1){
+            if (usingEraser){
+                self.usingEraser = false
+            }
+        } else {
+            if(!usingEraser){
+                self.usingEraser = true
+            }
+        }
+        setCanvasValues()
+        
+    }
     @IBAction func onClickSave(_ sender: Any) {
-       let image = canvasView.takeScreenshot()
+        let image = canvasView.takeScreenshot()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaved(_:didFinishSavingWithError:contextType:)), nil)
     }
     
@@ -83,25 +130,28 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let color = colorsArray[indexPath.row]
-        canvasView.strokeColor = color
+        colorSelected = colorsArray[indexPath.row]
+        if (usingEraser) {
+            self.usingEraser = false
+        }
+        canvasView.strokeColor = colorSelected
     }
 }
 
 extension UIView {
-
+    
     func takeScreenshot() -> UIImage {
-
+        
         // Begin context
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
-
+        
         // Draw view in that context
         drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-
+        
         // And finally, get image
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         if (image != nil)
         {
             return image!
