@@ -141,7 +141,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         if (usingEraser) {
             self.usingEraser = false
         }
-        canvasView.strokeColor = colorSelected
+        currentView.strokeColor = colorSelected
     }
 }
 
