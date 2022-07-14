@@ -44,10 +44,13 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
     }
     @IBAction func addLayerButton(_ sender: UIButton) {
-        let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+        let width = self.canvasView.frame.size.width
+        let height = self.canvasView.frame.size.height
+        let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         // Change UIView background colour
-        myNewView.backgroundColor=UIColor.lightGray
+        myNewView.backgroundColor = .clear
+        myNewView.isOpaque=false
         
         // Add rounded corners to UIView
         myNewView.layer.cornerRadius=25
@@ -57,9 +60,9 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
         // Change UIView Border Color to Red
         myNewView.layer.borderColor = UIColor.red.cgColor
-        myNewView.layer.zPosition = 50
         currentView = myNewView
-        self.view.addSubview(myNewView)
+        setCanvasValues()
+        self.view.insertSubview(myNewView, belowSubview: featuresView)
     }
     
     func setCanvasValues(){
