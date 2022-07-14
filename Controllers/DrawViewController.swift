@@ -13,19 +13,18 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
     @IBOutlet weak var canvasView: CanvasView!
     @IBOutlet var featuresView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var canvasLayers:[CanvasView] = []
     var usingEraser: Bool = false
     var colorSelected: UIColor = .black
-    
+    var layers:[[CanvasView]] = []
     @IBOutlet weak var widthSlider: UISlider!
     @IBOutlet weak var opacitySlider: UISlider!
     var pencilStrokeWidth: CGFloat = 1.0
     var pencilStrokeOpacity: CGFloat = 1.0
-    
+    var currentLayer:Int = 0
     var eraserStrokeWidth: CGFloat = 1.0
     var eraserStrokeOpacity: CGFloat = 1.0
     var blurView = UIVisualEffectView()
-    
+    var currentView: CanvasView!
     var kHeight: CGFloat = 130 // Total height of feature view
     var animationTime = 0.35
     
@@ -35,30 +34,38 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        //  canvasView.strokeWidth = 1
-        //  widthSlider.setThumbImage(#imageLiteral(resourceName: "brush"), for: .normal)
-        // opacitySlider.setThumbImage(#imageLiteral(resourceName: "opacity"), for: .normal)
         opacitySlider.tintColor = .red
         featuresView.transform = CGAffineTransform(translationX: 0, y: kHeight - (kHeight - 80))
-        canvasLayers.append(canvasView)
+        currentView = canvasView
     }
     
     
     @IBAction func viewLayersButton(_ sender: UIButton) {
-        print(canvasLayers)
+        
     }
     @IBAction func addLayerButton(_ sender: UIButton) {
-        let newView = CanvasView()
-        view.addSubview(newView)
-        canvasLayers.append(newView)
-        canvasView = newView
-        setCanvasValues()
+        let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
+        
+        // Change UIView background colour
+        myNewView.backgroundColor=UIColor.lightGray
+        
+        // Add rounded corners to UIView
+        myNewView.layer.cornerRadius=25
+        
+        // Add border to UIView
+        myNewView.layer.borderWidth=2
+        
+        // Change UIView Border Color to Red
+        myNewView.layer.borderColor = UIColor.red.cgColor
+        myNewView.layer.zPosition = 50
+        currentView = myNewView
+        self.view.addSubview(myNewView)
     }
     
     func setCanvasValues(){
-        canvasView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
-        canvasView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
-        canvasView.strokeColor = usingEraser ? .white : colorSelected
+        currentView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
+        currentView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
+        currentView.strokeColor = usingEraser ? .white : colorSelected
         widthSlider.value = Float(canvasView.pencilStrokeWidth)
         opacitySlider.value = Float(canvasView.pencilStrokeOpacity)
     }
@@ -70,7 +77,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         } else {
             pencilStrokeWidth = CGFloat(sender.value)
         }
-        canvasView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
+        currentView.pencilStrokeWidth = usingEraser ? eraserStrokeWidth : pencilStrokeWidth
     }
     
     @IBAction func onClickOpacity(_ sender: UISlider) {
@@ -80,11 +87,11 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         } else {
             pencilStrokeOpacity = CGFloat(sender.value)
         }
-        canvasView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
+        currentView.pencilStrokeOpacity = usingEraser ? eraserStrokeOpacity : pencilStrokeOpacity
     }
     
     @IBAction func onClickUndo(_ sender: Any) {
-        canvasView.undoDraw()
+        currentView.undoDraw()
     }
     @IBAction func changeTip(_ sender: UIButton) {
         if (sender.tag == 1){
@@ -100,7 +107,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         
     }
     @IBAction func onClickSave(_ sender: Any) {
-        let image = canvasView.takeScreenshot()
+        let image = currentView.takeScreenshot()
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSaved(_:didFinishSavingWithError:contextType:)), nil)
     }
     

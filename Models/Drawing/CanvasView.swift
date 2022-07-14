@@ -21,12 +21,10 @@ struct TouchPointsAndColor {
 }
 
 class CanvasView: UIView {
-
     var lines = [TouchPointsAndColor]()
     var pencilStrokeWidth: CGFloat = 1.0
     var strokeColor: UIColor = .black
     var pencilStrokeOpacity: CGFloat = 1.0
-    
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -65,6 +63,7 @@ class CanvasView: UIView {
         lastPoint.width = pencilStrokeWidth
         lastPoint.opacity = pencilStrokeOpacity
         lines.append(lastPoint)
+        print("\(strokeColor)")
         setNeedsDisplay()
     }
     
