@@ -18,6 +18,8 @@
 		33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B36287F1E3400B8050E /* DrawingViewController.swift */; };
 		33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B38287F3F3700B8050E /* DrawViewController.swift */; };
 		33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B3A287F3F9100B8050E /* CanvasView.swift */; };
+		332FA0FC28871168006E32EA /* DollarStrokeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332FA0FB28871168006E32EA /* DollarStrokeRecognizer.swift */; };
+		332FA0FE2887158D006E32EA /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 332FA0FD2887158D006E32EA /* Templates */; };
 		339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */; };
 		33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */; };
 		33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D26426283BF3EA004E4E97 /* Sudoku.swift */; };
@@ -51,6 +53,8 @@
 		33251B36287F1E3400B8050E /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		33251B38287F3F3700B8050E /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		33251B3A287F3F9100B8050E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		332FA0FB28871168006E32EA /* DollarStrokeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarStrokeRecognizer.swift; sourceTree = "<group>"; };
+		332FA0FD2887158D006E32EA /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
 		339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SudokuBoardElementViewCell.xib; sourceTree = "<group>"; };
 		33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SudokuMainScreenViewController.swift; path = Controllers/SudokuMainScreenViewController.swift; sourceTree = SOURCE_ROOT; };
 		33D26426283BF3EA004E4E97 /* Sudoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sudoku.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				F711ADC6264B0A2900D47408 /* Calculator.swift */,
 				33D26426283BF3EA004E4E97 /* Sudoku.swift */,
 				3318066E286364C500B74ED4 /* Highlight.swift */,
+				332FA0FB28871168006E32EA /* DollarStrokeRecognizer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 		F7881B5025D713370026F2F0 /* GettingUsedToSwift */ = {
 			isa = PBXGroup;
 			children = (
+				332FA0FD2887158D006E32EA /* Templates */,
 				F7881B5125D713370026F2F0 /* AppDelegate.swift */,
 				F7881B5325D713370026F2F0 /* SceneDelegate.swift */,
 				F7881B5C25D713380026F2F0 /* LaunchScreen.storyboard */,
@@ -258,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */,
+				332FA0FE2887158D006E32EA /* Templates in Resources */,
 				F7881B5925D713370026F2F0 /* Main.storyboard in Resources */,
 				331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */,
 				339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */,
@@ -290,6 +297,7 @@
 				F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */,
 				3318066F286364C500B74ED4 /* Highlight.swift in Sources */,
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
+				332FA0FC28871168006E32EA /* DollarStrokeRecognizer.swift in Sources */,
 				33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */,
 				33180C61286F50CE004FCD13 /* WeatherManager.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,
