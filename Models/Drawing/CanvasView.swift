@@ -12,9 +12,9 @@ struct TouchPointsAndColor {
     var color: UIColor?
     var width: CGFloat?
     var opacity: CGFloat?
-    var points: [CGPoint]?
+    var points: [CGPoint]
     
-    init(color: UIColor, points: [CGPoint]?) {
+    init(color: UIColor, points: [CGPoint]) {
         self.color = color
         self.points = points
     }
@@ -26,7 +26,6 @@ class CanvasView: UIView {
     var strokeColor: UIColor = .black
     var pencilStrokeOpacity: CGFloat = 1.0
     var usingEraser:Bool = false
-    private var loadedTemplates: UnistrokeRecognizer!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -36,7 +35,7 @@ class CanvasView: UIView {
         }
         
         lines.forEach { (line) in
-            for (i, p) in (line.points?.enumerated())! {
+            for (i, p) in (line.points.enumerated()) {
                 if i == 0 {
                     context.move(to: p)
                 } else {
@@ -56,14 +55,19 @@ class CanvasView: UIView {
     
     func userMovingLine(pointToBeAdded: CGPoint) {
         guard var lastPoint = lines.popLast() else {return}
-        lastPoint.points?.append(pointToBeAdded)
-        lastPoint.color = strokeColor
+        lastPoint.points.append(pointToBeAdded)
+        lastPoint.color = usingEraser ? .white :strokeColor
         lastPoint.width = pencilStrokeWidth
         lastPoint.opacity = pencilStrokeOpacity
         lines.append(lastPoint)
+        checkifNeedToRemove()
         setNeedsDisplay()
    }
-
+    
+    func checkifNeedToRemove(){
+        
+    }
+    
     func clearCanvasView() {
         lines.removeAll()
         setNeedsDisplay()
@@ -81,38 +85,7 @@ class CanvasView: UIView {
     }
     func determineShape(){
         if let points = lines.last?.points as? [CGPoint]{
-            if (loadedTemplates == nil){
-                loadTemplatesDirectory()
-            }
-            print(loadedTemplates.recognize(points: points, isUsingProtractor: true))
+            
         }
-        
     }
-    private func loadTemplatesDirectory() {
-            do {
-                // Load template files
-                loadedTemplates = UnistrokeRecognizer()
-                var templatesFolder = Bundle.main.resourcePath!
-                templatesFolder.append("/Templates")
-                let list = try FileManager.default.contentsOfDirectory(atPath: templatesFolder)
-                for file in list {
-                    let templateData = NSData(contentsOfFile: templatesFolder.appendingFormat("/%@", file))
-                    let templateDict = try JSONSerialization.jsonObject(with: templateData! as Data, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-                    let templateName = templateDict["name"]! as! String
-                    let templateRawPoints: [AnyObject] = templateDict["points"]! as! [AnyObject]
-                    var templatePoints: [CGPoint] = []
-                    for rawPoint in templateRawPoints {
-                        let x = (rawPoint as! [AnyObject]).first! as! Double
-                        let y = (rawPoint as! [AnyObject]).last! as! Double
-                        templatePoints.append(CGPoint(x: x, y: y))
-                    }
-                    
-                    let templateObj = UnistrokeTemplate(name: templateName, pts: templatePoints)
-                    loadedTemplates.addTemplate(templateObj)
-                }
-                // setup scroll view size
-            } catch (let error as NSError) {
-                print("Something went wrong while loading templates: \(error.localizedDescription)")
-            }
-        }
 }
