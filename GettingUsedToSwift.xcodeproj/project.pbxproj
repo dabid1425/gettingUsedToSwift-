@@ -15,6 +15,11 @@
 		33180C62286F50CE004FCD13 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33180C5F286F50CE004FCD13 /* WeatherData.swift */; };
 		33180C63286F50CE004FCD13 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33180C60286F50CE004FCD13 /* WeatherModel.swift */; };
 		331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 331CC1B628771DC200CF1615 /* Assets.xcassets */; };
+		3320274B288EEAF100AAEF90 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3320274A288EEAF100AAEF90 /* Realm */; };
+		3320274D288EEAF100AAEF90 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3320274C288EEAF100AAEF90 /* RealmSwift */; };
+		33202753288EFECE00AAEF90 /* DisplayLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */; };
+		33202756288F129E00AAEF90 /* DrawingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33202754288F129E00AAEF90 /* DrawingTableViewCell.swift */; };
+		33202757288F129E00AAEF90 /* DrawingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */; };
 		33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B36287F1E3400B8050E /* DrawingViewController.swift */; };
 		33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B38287F3F3700B8050E /* DrawViewController.swift */; };
 		33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B3A287F3F9100B8050E /* CanvasView.swift */; };
@@ -25,14 +30,11 @@
 		F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC6264B0A2900D47408 /* Calculator.swift */; };
 		F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F711ADC8264B0AEF00D47408 /* UnitConverter.swift */; };
 		F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */; };
-		F72A2C86284A4A6700AB85D7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F72A2C85284A4A6700AB85D7 /* Realm */; };
-		F72A2C88284A4A6700AB85D7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F72A2C87284A4A6700AB85D7 /* RealmSwift */; };
 		F72B2E9728413E7D00424A1A /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */; };
 		F7358DD7284908D7005AE562 /* SudokuBoardElementViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7358DD5284908D7005AE562 /* SudokuBoardElementViewCell.swift */; };
 		F7663EB525DD4B3F00E4A8D6 /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */; };
 		F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5125D713370026F2F0 /* AppDelegate.swift */; };
 		F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5325D713370026F2F0 /* SceneDelegate.swift */; };
-		F7881B5625D713370026F2F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7881B5525D713370026F2F0 /* ViewController.swift */; };
 		F7881B5925D713370026F2F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5725D713370026F2F0 /* Main.storyboard */; };
 		F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7881B5C25D713380026F2F0 /* LaunchScreen.storyboard */; };
 		F796A9D528400A3E00409BAE /* SudokuBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */; };
@@ -48,6 +50,9 @@
 		33180C5F286F50CE004FCD13 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		33180C60286F50CE004FCD13 /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		331CC1B628771DC200CF1615 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLayersViewController.swift; sourceTree = "<group>"; };
+		33202754288F129E00AAEF90 /* DrawingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTableViewCell.swift; sourceTree = "<group>"; };
+		33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingTableViewCell.xib; sourceTree = "<group>"; };
 		33251B36287F1E3400B8050E /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		33251B38287F3F3700B8050E /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		33251B3A287F3F9100B8050E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -64,7 +69,6 @@
 		F7881B4E25D713370026F2F0 /* GettingUsedToSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GettingUsedToSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7881B5125D713370026F2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7881B5325D713370026F2F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F7881B5525D713370026F2F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F7881B5825D713370026F2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7881B5D25D713380026F2F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7881B5F25D713380026F2F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72A2C88284A4A6700AB85D7 /* RealmSwift in Frameworks */,
-				F72A2C86284A4A6700AB85D7 /* Realm in Frameworks */,
+				3320274D288EEAF100AAEF90 /* RealmSwift in Frameworks */,
+				3320274B288EEAF100AAEF90 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +122,8 @@
 				F7881B5725D713370026F2F0 /* Main.storyboard */,
 				F7358DD5284908D7005AE562 /* SudokuBoardElementViewCell.swift */,
 				339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */,
+				33202754288F129E00AAEF90 /* DrawingTableViewCell.swift */,
+				33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,9 +133,7 @@
 			children = (
 				33251B38287F3F3700B8050E /* DrawViewController.swift */,
 				33D26424283BF3B2004E4E97 /* SudokuMainScreenViewController.swift */,
-				F7881B5525D713370026F2F0 /* ViewController.swift */,
 				F711ADC2264AF88800D47408 /* UnitConverterViewController.swift */,
-				F711ADC8264B0AEF00D47408 /* UnitConverter.swift */,
 				F72612592623391300CA91B6 /* QRCodeGeneratorViewController.swift */,
 				F7E0D50D261355230078A15E /* TipCalViewController.swift */,
 				F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */,
@@ -137,6 +141,7 @@
 				33180C4E286F4F78004FCD13 /* WeatherViewController.swift */,
 				F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */,
 				33251B36287F1E3400B8050E /* DrawingViewController.swift */,
+				33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 		33D26423283BF21B004E4E97 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F711ADC8264B0AEF00D47408 /* UnitConverter.swift */,
 				F711ADC6264B0A2900D47408 /* Calculator.swift */,
 				33D26426283BF3EA004E4E97 /* Sudoku.swift */,
 				3318066E286364C500B74ED4 /* Highlight.swift */,
@@ -210,8 +216,8 @@
 			);
 			name = GettingUsedToSwift;
 			packageProductDependencies = (
-				F72A2C85284A4A6700AB85D7 /* Realm */,
-				F72A2C87284A4A6700AB85D7 /* RealmSwift */,
+				3320274A288EEAF100AAEF90 /* Realm */,
+				3320274C288EEAF100AAEF90 /* RealmSwift */,
 			);
 			productName = GettingUsedToSwift;
 			productReference = F7881B4E25D713370026F2F0 /* GettingUsedToSwift.app */;
@@ -241,7 +247,7 @@
 			);
 			mainGroup = F7881B4525D713370026F2F0;
 			packageReferences = (
-				F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				33202749288EEAF100AAEF90 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = F7881B4F25D713370026F2F0 /* Products */;
 			projectDirPath = "";
@@ -259,6 +265,7 @@
 			files = (
 				F7881B5E25D713380026F2F0 /* LaunchScreen.storyboard in Resources */,
 				F7881B5925D713370026F2F0 /* Main.storyboard in Resources */,
+				33202757288F129E00AAEF90 /* DrawingTableViewCell.xib in Resources */,
 				331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */,
 				339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */,
 			);
@@ -274,6 +281,7 @@
 				F711ADC3264AF88800D47408 /* UnitConverterViewController.swift in Sources */,
 				F7358DD7284908D7005AE562 /* SudokuBoardElementViewCell.swift in Sources */,
 				33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */,
+				33202756288F129E00AAEF90 /* DrawingTableViewCell.swift in Sources */,
 				F7663EB525DD4B3F00E4A8D6 /* CountDownViewController.swift in Sources */,
 				33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */,
 				33D26427283BF3EA004E4E97 /* Sudoku.swift in Sources */,
@@ -282,7 +290,6 @@
 				33180C62286F50CE004FCD13 /* WeatherData.swift in Sources */,
 				F796A9D528400A3E00409BAE /* SudokuBoardViewController.swift in Sources */,
 				F726125A2623391300CA91B6 /* QRCodeGeneratorViewController.swift in Sources */,
-				F7881B5625D713370026F2F0 /* ViewController.swift in Sources */,
 				33180C63286F50CE004FCD13 /* WeatherModel.swift in Sources */,
 				F711ADC7264B0A2900D47408 /* Calculator.swift in Sources */,
 				33180C56286F5081004FCD13 /* SudokuBox.swift in Sources */,
@@ -292,6 +299,7 @@
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
 				33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */,
 				33180C61286F50CE004FCD13 /* WeatherManager.swift in Sources */,
+				33202753288EFECE00AAEF90 /* DisplayLayersViewController.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,
 				F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */,
 				33180C54286F5024004FCD13 /* SudokuRow.swift in Sources */,
@@ -506,7 +514,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		33202749288EEAF100AAEF90 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -517,14 +525,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F72A2C85284A4A6700AB85D7 /* Realm */ = {
+		3320274A288EEAF100AAEF90 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 33202749288EEAF100AAEF90 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		F72A2C87284A4A6700AB85D7 /* RealmSwift */ = {
+		3320274C288EEAF100AAEF90 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F72A2C84284A4A6700AB85D7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 33202749288EEAF100AAEF90 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

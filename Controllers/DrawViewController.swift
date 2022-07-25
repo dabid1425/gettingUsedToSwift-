@@ -14,7 +14,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
     @IBOutlet var featuresView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     var colorSelected: UIColor = .black
-    var layers:[[CanvasView]] = []
+    var layers:[CanvasView] = []
     @IBOutlet weak var widthSlider: UISlider!
     @IBOutlet weak var opacitySlider: UISlider!
     var pencilStrokeWidth: CGFloat = 1.0
@@ -39,6 +39,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         currentView = canvasView
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureMovement))
         currentView.addGestureRecognizer(panRecognizer)
+        layers.append(currentView)
     }
     @objc private func panGestureMovement(_ sender: UIPanGestureRecognizer) {
         let currentPanPoint = sender.location(in: view)
@@ -64,8 +65,23 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         return true
     }
     @IBAction func viewLayersButton(_ sender: UIButton) {
-        
+        self.performSegue(withIdentifier: "DrawingLayerCell", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DrawingLayerCell"{
+            if let secondViewController = segue.destination as? DisplayLayersViewController {
+                for layerIndex in 0..<layers.count {
+                    let drawingCellInfo = DrawingTableViewCell()
+                    drawingCellInfo.canvasView = layers[layerIndex]
+                    drawingCellInfo.layerName?.text = "Layer \(layerIndex + 1)"                
+                    secondViewController.layers.append(drawingCellInfo)
+                }
+            }
+        }
+            
+    }
+    
     @IBAction func addLayerButton(_ sender: UIButton) {
         let width = self.canvasView.frame.size.width
         let height = self.canvasView.frame.size.height
@@ -89,6 +105,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         currentView.addGestureRecognizer(panRecognizer)
         setCanvasValues()
         self.view.insertSubview(currentView, belowSubview: featuresView)
+        layers.append(currentView)
     }
     
     func setCanvasValues(){
