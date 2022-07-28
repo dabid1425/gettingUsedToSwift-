@@ -30,7 +30,7 @@ class DisplayLayersViewController: UIViewController,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DrawingTableViewCell
         cell.layerName!.text = "Layer"
         cell.layerView = layer.layerView
-        cell.layerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+        cell.layerView!.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         return cell
     }
     

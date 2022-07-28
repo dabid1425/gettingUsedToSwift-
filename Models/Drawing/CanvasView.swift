@@ -46,6 +46,7 @@ class CanvasView: UIView {
                 context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.black.cgColor)
                 context.setLineWidth(line.width ?? 1.0)
             }
+            context.setBlendMode(line.eraser ? CGBlendMode.clear : CGBlendMode.normal)
             context.setLineCap(.round)
             context.strokePath()
         }
@@ -57,65 +58,16 @@ class CanvasView: UIView {
     }
     
     func userMovingLine(pointToBeAdded: CGPoint) {
-        if (usingEraser){
-            checkifNeedToRemove(pointToBeAdded: pointToBeAdded)
-        } else {
             guard var lastPoint = lines.popLast() else {return}
             lastPoint.points.append(pointToBeAdded)
             lastPoint.color = strokeColor
             lastPoint.width = pencilStrokeWidth
-            lastPoint.eraser = false
-            lastPoint.opacity =  usingEraser ? 0.0 : pencilStrokeOpacity
+            lastPoint.eraser = usingEraser
+            lastPoint.opacity =  pencilStrokeOpacity
             lines.append(lastPoint)
-        }
         setNeedsDisplay()
     }
     
-    func distance(from: CGPoint, to: CGPoint) -> CGFloat {
-        return CGFloat(sqrt((from.x - to.x)*(from.x - to.x) + (from.y - to.y)*(from.y - to.y)))
-    }
-    
-    func isInCircle(withCenter center: CGPoint, point: CGPoint, radius: CGFloat) -> Bool {
-        return distance(from: center, to: point) <= radius
-    }
-    
-    func getPoints(withCenter center:CGPoint, radius: CGFloat) -> [CGPoint] {
-        let minX = Int(center.x - radius)
-        let minY = Int(center.y - radius)
-        let maxX = Int(center.x + radius)
-        let maxY = Int(center.y + radius)
-        
-        var result = [CGPoint]()
-        for x in minX...maxX {
-            for y in minY...maxY {
-                let point = CGPoint(x: x, y: y)
-                if isInCircle(withCenter: center, point: point, radius: radius) {
-                    result.append(point)
-                }
-            }
-        }
-        
-        return result
-    }
-    
-    
-    func checkifNeedToRemove(pointToBeAdded: CGPoint){
-        for checkIfNonEraseLine in 0..<lines.count{
-            if (!lines[checkIfNonEraseLine].eraser){
-                let pointsNearBy = getPoints(withCenter: pointToBeAdded, radius: pencilStrokeWidth * 20)
-                for pointNearBy in pointsNearBy{
-                    if (lines[checkIfNonEraseLine].points.contains(pointNearBy)){
-                        guard var lastPoint = lines.popLast() else {return}
-                        lastPoint.points.append(pointToBeAdded)
-                        lastPoint.color = .white
-                        lastPoint.width = pencilStrokeWidth
-                        lastPoint.opacity = pencilStrokeOpacity
-                        lines.append(lastPoint)
-                    }
-                }
-            }
-        }
-    }
     
     func clearCanvasView() {
         lines.removeAll()
