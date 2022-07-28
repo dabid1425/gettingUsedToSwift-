@@ -28,6 +28,21 @@ class CanvasView: UIView {
     var strokeColor: UIColor = .black
     var pencilStrokeOpacity: CGFloat = 1.0
     var usingEraser:Bool = false
+    var touchSensitivity:CGFloat =  0.0
+    let forceSensitivity: CGFloat = 4.0
+    var widthScale: CGFloat
+    var heightScale: CGFloat
+
+    init(frame: CGRect, widthScale: CGFloat, heightScale: CGFloat){
+        self.widthScale = widthScale
+        self.heightScale = heightScale
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -52,20 +67,28 @@ class CanvasView: UIView {
         }
     }
     
-    
     func newUserLine() {
         lines.append(TouchPointsAndColor(color: UIColor(), points: [CGPoint]()))
     }
     
     func userMovingLine(pointToBeAdded: CGPoint) {
-            guard var lastPoint = lines.popLast() else {return}
-            lastPoint.points.append(pointToBeAdded)
-            lastPoint.color = strokeColor
-            lastPoint.width = pencilStrokeWidth
-            lastPoint.eraser = usingEraser
-            lastPoint.opacity =  pencilStrokeOpacity
-            lines.append(lastPoint)
+        guard var lastPoint = lines.popLast() else {return}
+        lastPoint.points.append(pointToBeAdded)
+        lastPoint.color = strokeColor
+        lastPoint.width = touchSensitivity > 0 ? pencilStrokeWidth * touchSensitivity : pencilStrokeWidth
+        lastPoint.eraser = usingEraser
+        lastPoint.opacity =  pencilStrokeOpacity
+        lines.append(lastPoint)
         setNeedsDisplay()
+    }
+    
+    //maybe used to help determine pressure
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        touchSensitivity = touch.force * forceSensitivity
+        
     }
     
     

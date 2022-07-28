@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Bucket
-   uuid = "99F1DE6E-5CCA-4F67-969E-0E0A89342C5D"
+   uuid = "55A355A5-AFBC-44D6-9997-623B2EC0BB3D"
    type = "1"
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0CE29EA9-10A2-4CDB-BC9D-C8D18BAD5870"
+            uuid = "DF7A809E-97AC-4CA6-99C0-870C56928696"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controllers/DrawViewController.swift"
+            filePath = "Models/Drawing/CanvasView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EF3EF469-39C4-46E6-A9CF-AD7429F0F12A"
-            shouldBeEnabled = "Yes"
+            uuid = "5E780109-CCF3-4327-8C11-B900DD19A6C2"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controllers/DisplayLayersViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
