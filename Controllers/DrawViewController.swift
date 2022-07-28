@@ -51,7 +51,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
             currentView.userMovingLine(pointToBeAdded: currentPanPoint)
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
                 if (self.currenlyMovingPoint && currentPanPoint.equalTo(sender.location(in: self.view))){
-                    self.currentView.determineShape()
+                   // self.currentView.determineShape()
                 }
             }
         case .ended:
@@ -72,8 +72,15 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
         if segue.identifier == "DrawingLayerCell"{
             if let secondViewController = segue.destination as? DisplayLayersViewController {
                 for layerIndex in 0..<layers.count {
+                    let width = self.canvasView.frame.size.width
+                    let height = self.canvasView.frame.size.height
+                    let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: width, height: height))
                     let drawingCellInfo = DrawingTableViewCell()
-                    drawingCellInfo.canvasView = layers[layerIndex]
+                    myNewView.lines = layers[layerIndex].lines
+                    myNewView.pencilStrokeOpacity = layers[layerIndex].pencilStrokeOpacity
+                    myNewView.pencilStrokeWidth = layers[layerIndex].pencilStrokeWidth
+                    myNewView.removeGestureRecognizer(panRecognizer)
+                    drawingCellInfo.layerView = myNewView
                     drawingCellInfo.layerName?.text = "Layer \(layerIndex + 1)"                
                     secondViewController.layers.append(drawingCellInfo)
                 }

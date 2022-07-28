@@ -51,6 +51,7 @@ class CanvasView: UIView {
         }
     }
     
+    
     func newUserLine() {
         lines.append(TouchPointsAndColor(color: UIColor(), points: [CGPoint]()))
     }

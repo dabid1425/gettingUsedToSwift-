@@ -20,7 +20,6 @@
 		33202753288EFECE00AAEF90 /* DisplayLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */; };
 		33202756288F129E00AAEF90 /* DrawingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33202754288F129E00AAEF90 /* DrawingTableViewCell.swift */; };
 		33202757288F129E00AAEF90 /* DrawingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */; };
-		33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B36287F1E3400B8050E /* DrawingViewController.swift */; };
 		33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B38287F3F3700B8050E /* DrawViewController.swift */; };
 		33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B3A287F3F9100B8050E /* CanvasView.swift */; };
 		339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */; };
@@ -53,7 +52,6 @@
 		33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLayersViewController.swift; sourceTree = "<group>"; };
 		33202754288F129E00AAEF90 /* DrawingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTableViewCell.swift; sourceTree = "<group>"; };
 		33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingTableViewCell.xib; sourceTree = "<group>"; };
-		33251B36287F1E3400B8050E /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		33251B38287F3F3700B8050E /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		33251B3A287F3F9100B8050E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		339F92B7285276AF00FD8E3E /* SudokuBoardElementViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SudokuBoardElementViewCell.xib; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */,
 				33180C4E286F4F78004FCD13 /* WeatherViewController.swift */,
 				F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */,
-				33251B36287F1E3400B8050E /* DrawingViewController.swift */,
 				33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */,
 			);
 			path = Controllers;
@@ -297,7 +294,6 @@
 				F711ADC9264B0AEF00D47408 /* UnitConverter.swift in Sources */,
 				3318066F286364C500B74ED4 /* Highlight.swift in Sources */,
 				F7881B5225D713370026F2F0 /* AppDelegate.swift in Sources */,
-				33251B37287F1E3400B8050E /* DrawingViewController.swift in Sources */,
 				33180C61286F50CE004FCD13 /* WeatherManager.swift in Sources */,
 				33202753288EFECE00AAEF90 /* DisplayLayersViewController.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,

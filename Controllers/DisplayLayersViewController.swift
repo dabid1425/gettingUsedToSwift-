@@ -14,6 +14,7 @@ class DisplayLayersViewController: UIViewController,UITableViewDataSource {
         super.viewDidLoad()
         drawingLayerTableView.dataSource = self
         drawingLayerTableView.register(UINib(nibName: "DrawingTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
     }
     
     
@@ -27,11 +28,12 @@ class DisplayLayersViewController: UIViewController,UITableViewDataSource {
         let layer = layers[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DrawingTableViewCell
-        cell.layerName!.text = layer.layerName?.text
-        cell.canvasView = layer.canvasView
+        cell.layerName!.text = "Layer"
+        cell.layerView = layer.layerView
+        cell.layerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         return cell
     }
     
-
-   
+    
+    
 }
