@@ -30,8 +30,8 @@ class CanvasView: UIView {
     var usingEraser:Bool = false
     var touchSensitivity:CGFloat =  0.0
     let forceSensitivity: CGFloat = 4.0
-    var widthScale: CGFloat
-    var heightScale: CGFloat
+    var widthScale: CGFloat = 1.0
+    var heightScale: CGFloat = 1.0
 
     init(frame: CGRect, widthScale: CGFloat, heightScale: CGFloat){
         self.widthScale = widthScale
@@ -40,7 +40,7 @@ class CanvasView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     
@@ -53,10 +53,11 @@ class CanvasView: UIView {
         
         lines.forEach { (line) in
             for (i, p) in (line.points.enumerated()) {
+                let scaledPoint = CGPoint(x: p.x * widthScale, y: p.y * heightScale)
                 if i == 0 {
-                    context.move(to: p)
+                    context.move(to: scaledPoint)
                 } else {
-                    context.addLine(to: p)
+                    context.addLine(to: scaledPoint)
                 }
                 context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.black.cgColor)
                 context.setLineWidth(line.width ?? 1.0)
