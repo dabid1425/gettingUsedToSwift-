@@ -13,6 +13,7 @@ struct TouchPointsAndColor {
     var width: CGFloat?
     var opacity: CGFloat?
     var points: [CGPoint]
+    var blendMode: CGBlendMode = CGBlendMode.normal
     var eraser:Bool = false
     
     init(color: UIColor, points: [CGPoint]) {
@@ -48,7 +49,7 @@ class CanvasView: UIView {
                 context.setStrokeColor(line.color?.withAlphaComponent(line.opacity ?? 1.0).cgColor ?? UIColor.black.cgColor)
                 context.setLineWidth(line.width ?? 1.0)
             }
-            context.setBlendMode(line.eraser ? CGBlendMode.clear : CGBlendMode.normal)
+            context.setBlendMode(line.blendMode)
             context.setLineCap(.round)
             context.strokePath()
         }
@@ -65,6 +66,7 @@ class CanvasView: UIView {
         lastPoint.width = touchSensitivity > 0 ? pencilStrokeWidth * touchSensitivity : pencilStrokeWidth
         lastPoint.eraser = usingEraser
         lastPoint.opacity =  pencilStrokeOpacity
+        lastPoint.blendMode = usingEraser ? CGBlendMode.clear : CGBlendMode.normal
         lines.append(lastPoint)
         setNeedsDisplay()
     }

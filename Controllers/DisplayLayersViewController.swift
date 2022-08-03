@@ -31,8 +31,8 @@ class DisplayLayersViewController: UIViewController,UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DrawingTableViewCell
         if (currentLayer.layerView != nil){
-            let width = cell.layerView.frame.size.width
-            let height = cell.layerView.frame.size.height
+            let width = currentLayer.layerView.frame.size.width
+            let height = currentLayer.layerView.frame.size.height
             DispatchQueue.main.async {
                 cell.configure(layer: currentLayer.layerView, originalWidth: width, originalHeight: height )
             }

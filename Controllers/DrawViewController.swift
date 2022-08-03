@@ -88,20 +88,13 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
     @IBAction func addLayerButton(_ sender: UIButton) {
-        let myNewView=CanvasView()
+        let width = self.canvasView.frame.size.width
+        let height = self.canvasView.frame.size.height
+        let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         // Change UIView background colour
         myNewView.backgroundColor = .clear
         myNewView.isOpaque=false
-        
-        // Add rounded corners to UIView
-        myNewView.layer.cornerRadius=25
-        
-        // Add border to UIView
-        myNewView.layer.borderWidth=2
-        
-        // Change UIView Border Color to Red
-        myNewView.layer.borderColor = UIColor.red.cgColor
         currentView.removeGestureRecognizer(panRecognizer)
         currentView = myNewView
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureMovement))

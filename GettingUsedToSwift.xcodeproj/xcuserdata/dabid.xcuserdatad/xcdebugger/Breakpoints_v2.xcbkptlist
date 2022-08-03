@@ -7,15 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DF7A809E-97AC-4CA6-99C0-870C56928696"
+            uuid = "4587163F-800B-4FDF-90D3-2BF639A0F9A5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "View/DrawingTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "configure(layer:originalWidth:originalHeight:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "303946A9-DF97-4177-A2CA-B63B973D7D55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "View/DrawingTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configure(layer:originalWidth:originalHeight:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9DC349D8-1A6C-4DD8-A72D-66FD1A6C1B11"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Models/Drawing/CanvasView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5E780109-CCF3-4327-8C11-B900DD19A6C2"
+            uuid = "1B4F6A43-8D8F-4666-B369-21D4122691D7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controllers/DisplayLayersViewController.swift"
+            filePath = "Models/Drawing/CanvasView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "draw(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
