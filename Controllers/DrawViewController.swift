@@ -88,9 +88,7 @@ class DrawViewController: UIViewController,UICollectionViewDelegate, UICollectio
     }
     
     @IBAction func addLayerButton(_ sender: UIButton) {
-        let width = self.canvasView.frame.size.width
-        let height = self.canvasView.frame.size.height
-        let myNewView=CanvasView(frame: CGRect(x: 0, y: 0, width: width, height: height), widthScale: 1.0, heightScale: 1.0)
+        let myNewView=CanvasView()
         
         // Change UIView background colour
         myNewView.backgroundColor = .clear

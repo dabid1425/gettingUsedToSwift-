@@ -30,15 +30,14 @@ class DisplayLayersViewController: UIViewController,UITableViewDataSource {
         let currentLayer = layers[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DrawingTableViewCell
-        let width = cell.layerView.frame.size.width
-        let height = cell.layerView.frame.size.height
-        let newLayer = CanvasView(frame: CGRect(x: 0, y: 0, width: width, height: height), widthScale: width / originalScreenWidth, heightScale: height / originalScreenHeight)
         if (currentLayer.layerView != nil){
-            newLayer.lines = currentLayer.layerView.lines
-            cell.layerView = newLayer
-            cell.layerName!.text = "Layer"
+            let width = cell.layerView.frame.size.width
+            let height = cell.layerView.frame.size.height
+            DispatchQueue.main.async {
+                cell.configure(layer: currentLayer.layerView, originalWidth: width, originalHeight: height )
+            }
+            cell.layerName!.text = "Layer \(indexPath.row)"
         }
-        
         return cell
     }
     
