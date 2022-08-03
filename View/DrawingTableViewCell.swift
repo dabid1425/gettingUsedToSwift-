@@ -38,7 +38,7 @@ class DrawingTableViewCell: UITableViewCell {
         for line in layer.lines{
             var newLine = TouchPointsAndColor(color: UIColor(), points: [CGPoint]())
             for i in 0..<line.points.count{
-                let scaledPoint = CGPoint(x: line.points[i].x * (width / originalWidth) , y: line.points[i].y * (height / originalWidth))
+                let scaledPoint = CGPoint(x: line.points[i].x * (width / originalWidth) , y: line.points[i].y * (height / originalHeight))
                 newLine.points.append(scaledPoint)
                 newLine.eraser = line.eraser
                 newLine.color = line.color
