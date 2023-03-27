@@ -28,7 +28,9 @@ class SudokuMainScreenViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SudokuBoardViewController
-        vc.newGame = newGameBoolean
+        let viewModel = SudokuGameModel()
+        viewModel.newGame = newGameBoolean
+        vc.viewModel = viewModel
     }
     
     
