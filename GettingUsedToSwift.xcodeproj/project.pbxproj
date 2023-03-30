@@ -22,6 +22,7 @@
 		33202757288F129E00AAEF90 /* DrawingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */; };
 		33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B38287F3F3700B8050E /* DrawViewController.swift */; };
 		33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B3A287F3F9100B8050E /* CanvasView.swift */; };
+		333867C529D5DEEE001A94B9 /* SudokuGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333867C429D5DEEE001A94B9 /* SudokuGameViewModel.swift */; };
 		3381EB1229D1DA3A00967AEC /* SudokuGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */; };
 		3381EB1929D1DCA900967AEC /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1829D1DCA900967AEC /* DropDown */; };
 		3381EB1C29D1DCCC00967AEC /* EasyTipView in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1B29D1DCCC00967AEC /* EasyTipView */; };
@@ -72,6 +73,7 @@
 		33202755288F129E00AAEF90 /* DrawingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingTableViewCell.xib; sourceTree = "<group>"; };
 		33251B38287F3F3700B8050E /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		33251B3A287F3F9100B8050E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		333867C429D5DEEE001A94B9 /* SudokuGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGameViewModel.swift; sourceTree = "<group>"; };
 		3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGameModel.swift; sourceTree = "<group>"; };
 		3381EB1D29D1DEDA00967AEC /* ExpandingStackViewExample.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingStackViewExample.xib; sourceTree = "<group>"; };
 		3381EB2029D1E2DD00967AEC /* DropDownWithLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownWithLabel.xib; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 				33251B3A287F3F9100B8050E /* CanvasView.swift */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		333867C329D5DD8F001A94B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				333867C429D5DEEE001A94B9 /* SudokuGameViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		3381EB1029D1DA0E00967AEC /* Cells */ = {
@@ -275,6 +285,7 @@
 		F7881B4525D713370026F2F0 = {
 			isa = PBXGroup;
 			children = (
+				333867C329D5DD8F001A94B9 /* ViewModel */,
 				33D26423283BF21B004E4E97 /* Utils */,
 				33D26422283BF1FD004E4E97 /* Models */,
 				33D26421283BF1F1004E4E97 /* Controllers */,
@@ -426,6 +437,7 @@
 				3381EB3729D2026B00967AEC /* Array+Utils.swift in Sources */,
 				33D26425283BF3B2004E4E97 /* SudokuMainScreenViewController.swift in Sources */,
 				F7881B5425D713370026F2F0 /* SceneDelegate.swift in Sources */,
+				333867C529D5DEEE001A94B9 /* SudokuGameViewModel.swift in Sources */,
 				33180C54286F5024004FCD13 /* SudokuRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

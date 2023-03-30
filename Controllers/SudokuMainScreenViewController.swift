@@ -17,31 +17,15 @@ class SudokuMainScreenViewController: UIViewController {
     }
     
     @IBAction func buttonClicked(_ sender: UIButton) {
-        if (sender.tag == newGame.tag){
-            newGameBoolean = true
-            
-        } else if (sender.tag == loadGame.tag){
-            newGameBoolean = false
-        }
+        newGameBoolean = sender.tag == newGame.tag
         self.performSegue(withIdentifier: "ShowBoard", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! SudokuBoardViewController
-        let viewModel = SudokuGameModel()
-        viewModel.newGame = newGameBoolean
+        let viewModel = SudokuGameViewModel()
+        viewModel.sudokuGameModel.newGame = newGameBoolean
         vc.viewModel = viewModel
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

@@ -9,22 +9,22 @@ import UIKit
 class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     @IBOutlet weak var pencilButton: UIButton!
     @IBOutlet var sudokuBoard: UICollectionView!
-    var viewModel: SudokuGameModel!
-   var selectedCategory : SudokuRow? {
+    var viewModel: SudokuGameViewModel!
+    var selectedCategory : SudokuRow? {
         didSet{
             loadItems()
         }
     }
     @IBAction func buttonClicked(_ sender: UIButton) {
-        viewModel.indexCount = -1
-        viewModel.changeColorSelectionOrder = false
+        viewModel.sudokuGameModel.indexCount = -1
+        viewModel.sudokuGameModel.changeColorSelectionOrder = false
         switch sender.tag{
         case 1,2,3,4,5,6,7,8,9 :
-            if (self.viewModel.sudokuRowSelected != -1 && self.viewModel.sudokuColumnSelected != -1){
-                if (!viewModel.sudoku.addNumberToBoard(pencilSelected: viewModel.pencilSelected, numberSelected: sender.tag, row: self.viewModel.sudokuRowSelected, column: self.viewModel.sudokuColumnSelected, realm:viewModel.realm)) {
-                    let dummyIndex = IndexPath(row: viewModel.sudokuRowSelected, section: viewModel.sudokuColumnSelected)
+            if (self.viewModel.sudokuGameModel.sudokuRowSelected != -1 && self.viewModel.sudokuGameModel.sudokuColumnSelected != -1){
+                if (!viewModel.sudokuGameModel.sudoku.addNumberToBoard(pencilSelected: viewModel.sudokuGameModel.pencilSelected, numberSelected: sender.tag, row: self.viewModel.sudokuGameModel.sudokuRowSelected, column: self.viewModel.sudokuGameModel.sudokuColumnSelected, realm:viewModel.sudokuGameModel.realm)) {
+                    let dummyIndex = IndexPath(row: viewModel.sudokuGameModel.sudokuRowSelected, section: viewModel.sudokuGameModel.sudokuColumnSelected)
                     DispatchQueue.main.async {
-                        let indexPath = self.viewModel.sudoku.findConflict(numberSelected: sender.tag, row: self.viewModel.sudokuRowSelected, column: self.viewModel.sudokuColumnSelected)
+                        let indexPath = self.viewModel.sudokuGameModel.sudoku.findConflict(numberSelected: sender.tag, row: self.viewModel.sudokuGameModel.sudokuRowSelected, column: self.viewModel.sudokuGameModel.sudokuColumnSelected)
                         if ( indexPath.row != -1 && indexPath.row != -1){
                             if let cell = self.sudokuBoard!.cellForItem(at: indexPath) as? SudokuBoardElementViewCell {
                                 UIView.animate(withDuration: 2, delay: 0.0, options: .curveEaseInOut, animations: {
@@ -44,14 +44,14 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                     }
                     
                 } else {
-                    if(!viewModel.pencilSelected){
-                        if (viewModel.canidates){
-                            viewModel.sudoku.generateCandidates(realm: viewModel.realm)
+                    if(!viewModel.sudokuGameModel.pencilSelected){
+                        if (viewModel.sudokuGameModel.canidates){
+                            viewModel.sudokuGameModel.sudoku.generateCandidates(realm: viewModel.sudokuGameModel.realm)
                         }
-                        viewModel.sudoku.checkSelectedState(row: viewModel.sudokuRowSelected, column: viewModel.sudokuColumnSelected, realm: viewModel.realm)
-                        self.viewModel.sudokuColumnSelected = -1
-                        self.viewModel.sudokuRowSelected = -1
-                        if (viewModel.sudoku.checkIfSolved()){
+                        viewModel.sudokuGameModel.sudoku.checkSelectedState(row: viewModel.sudokuGameModel.sudokuRowSelected, column: viewModel.sudokuGameModel.sudokuColumnSelected, realm: viewModel.sudokuGameModel.realm)
+                        self.viewModel.sudokuGameModel.sudokuColumnSelected = -1
+                        self.viewModel.sudokuGameModel.sudokuRowSelected = -1
+                        if (viewModel.sudokuGameModel.sudoku.checkIfSolved()){
                             newGameDialog()
                         }
                     }
@@ -59,13 +59,13 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 self.sudokuBoard.reloadData()
             }
         case 10 :
-            viewModel.pencilSelected = !viewModel.pencilSelected
-            pencilButton.isSelected = viewModel.pencilSelected
+            viewModel.sudokuGameModel.pencilSelected = !viewModel.sudokuGameModel.pencilSelected
+            pencilButton.isSelected = viewModel.sudokuGameModel.pencilSelected
         case 11 :
             newGameFunc()
         case 12 :
-            viewModel.canidates = true
-            viewModel.sudoku.generateCandidates(realm: viewModel.realm)
+            viewModel.sudokuGameModel.canidates = true
+            viewModel.sudokuGameModel.sudoku.generateCandidates(realm: viewModel.sudokuGameModel.realm)
             self.sudokuBoard.reloadData()
         default:
             print("unable to determine click")
@@ -75,7 +75,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (viewModel.newGame) {
+        if (viewModel.sudokuGameModel.newGame) {
             newGameFunc()
         } else {
             loadItems()
@@ -85,17 +85,17 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         super.viewDidLoad()
         sudokuBoard.delegate = self
         sudokuBoard.dataSource = self
-        viewModel.screenSize = self.view.frame
-        viewModel.screenWidth = viewModel.screenSize.width/9
-        viewModel.screenHeight = viewModel.screenSize.height/9
+        viewModel.sudokuGameModel.screenSize = self.view.frame
+        viewModel.sudokuGameModel.screenWidth = viewModel.sudokuGameModel.screenSize.width/9
+        viewModel.sudokuGameModel.screenHeight = viewModel.sudokuGameModel.screenSize.height/9
         sudokuBoard.contentInsetAdjustmentBehavior = .always
         sudokuBoard.register(UINib(nibName:"SudokuBoardElementViewCell", bundle: nil), forCellWithReuseIdentifier: "SudokuCell")
     }
     func loadItems() {
         viewModel.loadItems()
-        if (viewModel.sudoku.checkIfSolved()){
+        if (viewModel.sudokuGameModel.sudoku.checkIfSolved()){
             newGameDialog()
-        }else if (viewModel.sudoku.isEmpty){
+        }else if (viewModel.sudokuGameModel.sudoku.isEmpty){
             let alert = UIAlertController(title: "No game saved ", message: "", preferredStyle: .alert)
             let action = UIAlertAction(title: "Make new game", style: .default) { [self] (action) in
                 self.newGameFunc()
@@ -155,12 +155,12 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.sudoku == nil ? 0 : viewModel.sudoku.getMatBoard().count
+        return viewModel.sudokuGameModel.sudoku == nil ? 0 : viewModel.sudokuGameModel.sudoku.getMatBoard().count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return rows
-        return viewModel.sudoku == nil ? 0 : viewModel.sudoku.getMatBoard()[section].count
+        return viewModel.sudokuGameModel.sudoku == nil ? 0 : viewModel.sudokuGameModel.sudoku.getMatBoard()[section].count
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) ->
@@ -170,7 +170,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
             cell.layer.borderWidth = 1
             
             //setCharacter
-            let elment = viewModel.sudoku.getMatBoard()[indexPath.row][indexPath.section]
+            let elment = viewModel.sudokuGameModel.sudoku.getMatBoard()[indexPath.row][indexPath.section]
             var possibleValuesLabel: String = ""
             if (elment.isHidden && !elment.isSolved){
                 for i in elment.possibleValues {
@@ -185,7 +185,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
                 cell.setLabelColor(color:.gray)
             }
             var highlightedValueFound:Bool = false
-            for highlightedValue in viewModel.highlightedLocations{
+            for highlightedValue in viewModel.sudokuGameModel.highlightedLocations{
                 if (highlightedValue.row == indexPath.row && highlightedValue.column == indexPath.section){
                     highlightedValueFound = true
                     break
@@ -209,7 +209,7 @@ class SudokuBoardViewController: UIViewController, UICollectionViewDataSource, U
         self.sudokuBoard.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: viewModel.screenWidth, height: viewModel.screenWidth);
+        return CGSize(width: viewModel.sudokuGameModel.screenWidth, height: viewModel.sudokuGameModel.screenWidth);
         
     }
 }
