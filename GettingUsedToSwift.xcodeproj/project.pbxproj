@@ -23,6 +23,9 @@
 		33251B39287F3F3700B8050E /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B38287F3F3700B8050E /* DrawViewController.swift */; };
 		33251B3B287F3F9100B8050E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33251B3A287F3F9100B8050E /* CanvasView.swift */; };
 		333867C529D5DEEE001A94B9 /* SudokuGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333867C429D5DEEE001A94B9 /* SudokuGameViewModel.swift */; };
+		334969BE2A14E86A008A4F41 /* WeatherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */; };
+		334969C02A14E908008A4F41 /* GenerateQRCodes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */; };
+		334969C22A14ED4D008A4F41 /* UnitConverter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */; };
 		3381EB1229D1DA3A00967AEC /* SudokuGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */; };
 		3381EB1929D1DCA900967AEC /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1829D1DCA900967AEC /* DropDown */; };
 		3381EB1C29D1DCCC00967AEC /* EasyTipView in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1B29D1DCCC00967AEC /* EasyTipView */; };
@@ -74,6 +77,9 @@
 		33251B38287F3F3700B8050E /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		33251B3A287F3F9100B8050E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		333867C429D5DEEE001A94B9 /* SudokuGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGameViewModel.swift; sourceTree = "<group>"; };
+		334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherViewController.storyboard; sourceTree = "<group>"; };
+		334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateQRCodes.storyboard; sourceTree = "<group>"; };
+		334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnitConverter.storyboard; sourceTree = "<group>"; };
 		3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGameModel.swift; sourceTree = "<group>"; };
 		3381EB1D29D1DEDA00967AEC /* ExpandingStackViewExample.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingStackViewExample.xib; sourceTree = "<group>"; };
 		3381EB2029D1E2DD00967AEC /* DropDownWithLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownWithLabel.xib; sourceTree = "<group>"; };
@@ -199,6 +205,9 @@
 				3381EB2829D1F21400967AEC /* ScrollbleWithTableViews.storyboard */,
 				3381EB2E29D1F24F00967AEC /* ScrollableWithCollectionViews.storyboard */,
 				3381EB3029D1F26400967AEC /* PagingViewController.storyboard */,
+				334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */,
+				334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */,
+				334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -251,7 +260,6 @@
 				F7663EB425DD4B3F00E4A8D6 /* CountDownViewController.swift */,
 				F796A9D428400A3E00409BAE /* SudokuBoardViewController.swift */,
 				33180C4E286F4F78004FCD13 /* WeatherViewController.swift */,
-				F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */,
 				33202752288EFECE00AAEF90 /* DisplayLayersViewController.swift */,
 				3381EB2429D1EA9800967AEC /* DragbleViewFromSideViewController.swift */,
 				3381EB2A29D1F22300967AEC /* ScrollableWithTableViews.swift */,
@@ -273,6 +281,7 @@
 		33D26423283BF21B004E4E97 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F72B2E9628413E7D00424A1A /* ColumnFlowLayout.swift */,
 				F711ADC8264B0AEF00D47408 /* UnitConverter.swift */,
 				F711ADC6264B0A2900D47408 /* Calculator.swift */,
 				33D26426283BF3EA004E4E97 /* Sudoku.swift */,
@@ -390,10 +399,13 @@
 				33202757288F129E00AAEF90 /* DrawingTableViewCell.xib in Resources */,
 				3381EB2729D1ED3900967AEC /* ScrollableViewWithStacks.storyboard in Resources */,
 				3381EB2329D1E87100967AEC /* DragableViewFromSide.storyboard in Resources */,
+				334969C22A14ED4D008A4F41 /* UnitConverter.storyboard in Resources */,
 				3381EB1E29D1DEDA00967AEC /* ExpandingStackViewExample.xib in Resources */,
 				331CC1B728771DC200CF1615 /* Assets.xcassets in Resources */,
 				339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */,
+				334969BE2A14E86A008A4F41 /* WeatherViewController.storyboard in Resources */,
 				3381EB2929D1F21400967AEC /* ScrollbleWithTableViews.storyboard in Resources */,
+				334969C02A14E908008A4F41 /* GenerateQRCodes.storyboard in Resources */,
 				3381EB3D29D2032900967AEC /* DropDownTableViewCell.xib in Resources */,
 				3381EB3129D1F26400967AEC /* PagingViewController.storyboard in Resources */,
 			);
