@@ -26,6 +26,8 @@
 		334969BE2A14E86A008A4F41 /* WeatherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */; };
 		334969C02A14E908008A4F41 /* GenerateQRCodes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */; };
 		334969C22A14ED4D008A4F41 /* UnitConverter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */; };
+		334969C42A14F3A3008A4F41 /* TipCalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969C32A14F3A3008A4F41 /* TipCalculator.storyboard */; };
+		334969C62A14F40C008A4F41 /* CountDown.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334969C52A14F40C008A4F41 /* CountDown.storyboard */; };
 		3381EB1229D1DA3A00967AEC /* SudokuGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */; };
 		3381EB1929D1DCA900967AEC /* DropDown in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1829D1DCA900967AEC /* DropDown */; };
 		3381EB1C29D1DCCC00967AEC /* EasyTipView in Frameworks */ = {isa = PBXBuildFile; productRef = 3381EB1B29D1DCCC00967AEC /* EasyTipView */; };
@@ -80,6 +82,8 @@
 		334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherViewController.storyboard; sourceTree = "<group>"; };
 		334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GenerateQRCodes.storyboard; sourceTree = "<group>"; };
 		334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnitConverter.storyboard; sourceTree = "<group>"; };
+		334969C32A14F3A3008A4F41 /* TipCalculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TipCalculator.storyboard; sourceTree = "<group>"; };
+		334969C52A14F40C008A4F41 /* CountDown.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CountDown.storyboard; sourceTree = "<group>"; };
 		3381EB1129D1DA3A00967AEC /* SudokuGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuGameModel.swift; sourceTree = "<group>"; };
 		3381EB1D29D1DEDA00967AEC /* ExpandingStackViewExample.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingStackViewExample.xib; sourceTree = "<group>"; };
 		3381EB2029D1E2DD00967AEC /* DropDownWithLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownWithLabel.xib; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				334969BD2A14E86A008A4F41 /* WeatherViewController.storyboard */,
 				334969BF2A14E908008A4F41 /* GenerateQRCodes.storyboard */,
 				334969C12A14ED4D008A4F41 /* UnitConverter.storyboard */,
+				334969C32A14F3A3008A4F41 /* TipCalculator.storyboard */,
+				334969C52A14F40C008A4F41 /* CountDown.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -405,8 +411,10 @@
 				339F92B8285276AF00FD8E3E /* SudokuBoardElementViewCell.xib in Resources */,
 				334969BE2A14E86A008A4F41 /* WeatherViewController.storyboard in Resources */,
 				3381EB2929D1F21400967AEC /* ScrollbleWithTableViews.storyboard in Resources */,
+				334969C42A14F3A3008A4F41 /* TipCalculator.storyboard in Resources */,
 				334969C02A14E908008A4F41 /* GenerateQRCodes.storyboard in Resources */,
 				3381EB3D29D2032900967AEC /* DropDownTableViewCell.xib in Resources */,
+				334969C62A14F40C008A4F41 /* CountDown.storyboard in Resources */,
 				3381EB3129D1F26400967AEC /* PagingViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

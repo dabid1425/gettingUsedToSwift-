@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="80M-ut-unq">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CountDown-->
+        <scene sceneID="VTh-3t-4Rv">
+            <objects>
+                <viewController storyboardIdentifier="CountDownViewController" id="80M-ut-unq" customClass="CountDownViewController" customModule="GettingUsedToSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L9h-WH-dxh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Skd-Qa-EEH">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="23S-dP-XEf">
+                                        <rect key="frame" x="36.666666666666657" y="251.33333333333329" width="320" height="256.66666666666674"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYf-JL-8tI">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rOm-FI-u5Z">
+                                                <rect key="frame" x="0.0" y="20.333333333333371" width="320" height="216"/>
+                                                <connections>
+                                                    <action selector="dateSelected:" destination="80M-ut-unq" eventType="valueChanged" id="TXN-6Z-yRP"/>
+                                                </connections>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Left: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-4P-8sH">
+                                                <rect key="frame" x="0.0" y="236.33333333333331" width="320" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="23S-dP-XEf" firstAttribute="centerY" secondItem="Skd-Qa-EEH" secondAttribute="centerY" id="E4z-8J-X5U"/>
+                                    <constraint firstItem="23S-dP-XEf" firstAttribute="centerX" secondItem="Skd-Qa-EEH" secondAttribute="centerX" id="IMe-yN-vE9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qbc-fL-flc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Skd-Qa-EEH" firstAttribute="top" secondItem="qbc-fL-flc" secondAttribute="top" id="0Bd-Ed-3EI"/>
+                            <constraint firstItem="Skd-Qa-EEH" firstAttribute="leading" secondItem="qbc-fL-flc" secondAttribute="leading" id="QHh-LU-Rs9"/>
+                            <constraint firstItem="qbc-fL-flc" firstAttribute="trailing" secondItem="Skd-Qa-EEH" secondAttribute="trailing" id="Wnc-tZ-2qd"/>
+                            <constraint firstItem="qbc-fL-flc" firstAttribute="bottom" secondItem="Skd-Qa-EEH" secondAttribute="bottom" id="hlB-Cc-8BX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="CountDown" image="clock" catalog="system" id="kgT-eK-TKb"/>
+                    <navigationItem key="navigationItem" id="lcS-XA-SpX"/>
+                    <connections>
+                        <outlet property="CountDownDateSelected" destination="rOm-FI-u5Z" id="ht5-v6-7Xf"/>
+                        <outlet property="countDownLabel" destination="L1b-4P-8sH" id="HBL-jj-abk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3p-c4-7fr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="-1746"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
